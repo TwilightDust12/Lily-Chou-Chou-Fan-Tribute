@@ -1,962 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="The Ether — Personal Creative Portfolio of Philia. Inspired by the cinematography, ethereal soundscapes, and emotional resonance of Shunji Iwai's All About Lily Chou-Chou.">
-  <meta name="keywords" content="Lily Chou-Chou, The Ether, Philia, Personal Portfolio, Sound Design, Cinematography, Web Development, Ambient Music, Kokyuu, Glide, Shunji Iwai, Noboru Shinoda">
-  <meta name="author" content="Philia">
-  <meta name="theme-color" content="#070c18">
-  <title>The Ether | Philia — Personal Portfolio &amp; Lily Chou-Chou Archive</title>
-
-  <!-- Browser Tab Favicon (Derived from lily-logo.jpg) -->
-  <link rel="icon" type="image/x-icon" href="./favicon.ico?v=2.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon.png?v=2.0">
-  <link rel="icon" type="image/jpeg" href="./assets/lily-logo.jpg?v=2.0">
-  <link rel="apple-touch-icon" href="./assets/favicon.png?v=2.0">
-
-  <!-- Google Fonts: Shippori Mincho (Cinematic titles), Zen Kaku Gothic New (Poetic body), Space Mono (2001 BBS forum) -->
+  <meta name="description" content="The Ether: an independent fan tribute to All About Lily Chou-Chou. Wander through the film's landscapes, listen to ambient chimes, and stay a little longer.">
+  <meta name="theme-color" content="#f1f0e8">
+  <title>The Ether — All About Lily Chou-Chou</title>
+  <link rel="icon" href="./favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
-
-  <!-- Relative Path to Stylesheet with Cache Busting -->
-  <link rel="stylesheet" href="./style.css?v=2.0">
-
-  <!-- Relative Path to JavaScript with defer and Cache Busting -->
-  <script src="./script.js?v=2.0" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./player.css">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./script.js" defer></script>
+  <script src="./player.js" defer></script>
 </head>
 <body>
-  <!-- Refined 35mm CineAlta Micro-Grain & Optical Lens Vignette Overlays -->
-  <div class="film-grain-overlay" id="film-grain-overlay" aria-hidden="true"></div>
-  <div class="digicam-vignette" id="digicam-vignette" aria-hidden="true"></div>
-
-  <!-- 2001 Digicam & Lost Internet Archive Viewfinder HUD -->
-  <aside class="digicam-hud" id="digicam-hud" aria-hidden="true">
-    <div class="digicam-hud-top-left">
-      <span class="digicam-rec"><span class="rec-dot">●</span> REC</span>
-      <span class="digicam-speed">SP 24P</span>
-      <span class="digicam-battery">[■■■□]</span>
-    </div>
-    <div class="digicam-hud-bottom-right">
-      <span class="digicam-timestamp" id="digicam-timestamp">AUG 31 2001 &bull; 16:44:02</span>
-      <span class="digicam-archive-tag">ARCHIVE // LILYHOLIC.NET RESTORED</span>
-    </div>
-  </aside>
-
-  <!-- Accessible Skip Link -->
-  <a href="#main-content" class="skip-link">Skip to main content</a>
-
-  <!-- ========================================================= -->
-  <!-- 1. HEADER / NAVBAR LANDMARK                               -->
-  <!-- ========================================================= -->
-  <header class="site-header" id="header" role="banner">
-    <div class="header-container container">
-      <!-- Brand Logo and Identity -->
-      <a href="#hero" class="brand-link" aria-label="The Ether - Philia Portfolio Home">
-        <img 
-          src="./assets/lily-logo.jpg" 
-          alt="Official All About Lily Chou-Chou logo artwork" 
-          class="brand-logo" 
-          width="28" 
-          height="42"
-          loading="eager">
-        <div class="brand-text-group">
-          <span class="brand-title">The Ether</span>
-          <span class="brand-subtitle">Philia &bull; Creative Portfolio</span>
-        </div>
-      </a>
-
-      <!-- Mobile Hamburger Menu Button -->
-      <button 
-        type="button" 
-        class="menu-toggle" 
-        id="menu-toggle" 
-        aria-label="Toggle navigation menu" 
-        aria-expanded="false" 
-        aria-controls="primary-navigation">
-        <span class="hamburger-bar" aria-hidden="true"></span>
-        <span class="hamburger-bar" aria-hidden="true"></span>
-        <span class="hamburger-bar" aria-hidden="true"></span>
-      </button>
-
-      <!-- Primary Navigation Links -->
-      <nav class="primary-nav" id="primary-navigation" aria-label="Primary Navigation">
-        <ul class="nav-list" role="list">
-          <li class="nav-item"><a href="#hero" class="nav-link active">Home</a></li>
-          <li class="nav-item"><a href="#about" class="nav-link">About Me</a></li>
-          <li class="nav-item"><a href="#skills" class="nav-link">Skills &amp; Ethos</a></li>
-          <li class="nav-item"><a href="#projects" class="nav-link">Featured Works</a></li>
-          <li class="nav-item"><a href="#interactive" class="nav-link">Interactive Terminal</a></li>
-          <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
-        </ul>
-
-        <!-- Enhanced Accessible Theme Switcher (Smooth Sunlit / Nocturnal Ether Toggle) -->
-        <button 
-          type="button" 
-          class="theme-toggle" 
-          id="theme-toggle" 
-          aria-label="Switch to sunlit day mode" 
-          title="Switch to sunlit day mode">
-          <span class="theme-icon-box" aria-hidden="true">
-            <svg class="theme-icon sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="5"></circle>
-              <line x1="12" y1="1" x2="12" y2="3"></line>
-              <line x1="12" y1="21" x2="12" y2="23"></line>
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-              <line x1="1" y1="12" x2="3" y2="12"></line>
-              <line x1="21" y1="12" x2="23" y2="12"></line>
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-            </svg>
-            <svg class="theme-icon moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-          </span>
-          <span class="sr-only">Toggle theme</span>
-        </button>
-
-        <!-- 2001 Digicam & Lost Internet Archive Filter Toggle -->
-        <button 
-          type="button" 
-          class="digicam-toggle grain-toggle" 
-          id="digicam-toggle" 
-          aria-label="Toggle 2001 Digicam & Lost Internet Archive Filter" 
-          aria-pressed="true" 
-          title="Toggle 2001 Digicam & Lost Internet Archive Filter (CCD noise, scanlines, lens vignette & timestamp)">
-          <span class="digicam-icon-tag" aria-hidden="true">DIGICAM</span>
-          <span class="digicam-status-dot" id="digicam-status-dot" aria-hidden="true">●</span>
-        </button>
-      </nav>
-    </div>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="The Ether — All About Lily Chou-Chou home">Ç​† All About Lily Chou-Chou<span class="brand-caption">A lily chou-chou tribute</span></a>
+    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="primary-navigation" type="button">Menu <span aria-hidden="true">+</span></button>
+    <nav id="primary-navigation" class="primary-nav" aria-label="Main navigation"><a href="#film">The film</a><a href="#stills">The landscapes</a><a href="#listening">Listening room <span aria-hidden="true">↗</span></a></nav>
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to night theme"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20.5 13a8.6 8.6 0 0 1-9.5-9.5A8.6 8.6 0 1 0 20.5 13Z"/></svg><span id="theme-label">Night</span></button>
   </header>
-
-  <!-- ========================================================= -->
-  <!-- MAIN CONTENT LANDMARK                                     -->
-  <!-- ========================================================= -->
-  <main id="main-content" class="site-main">
-
-    <!-- ======================================================= -->
-    <!-- 2. HERO SECTION                                         -->
-    <!-- ======================================================= -->
-    <section class="hero-section" id="hero" aria-labelledby="hero-title">
-      
-      <!-- Atmospheric Sun Leak & Anamorphic Bloom -->
-      <div class="hero-sun-leak" aria-hidden="true"></div>
-
-      <!-- Vertical Japanese Calligraphy Watermark -->
-      <div class="vertical-kanji-watermark hero-kanji-watermark" aria-hidden="true">呼吸とエーテル</div>
-
-      <!-- Atmospheric Typographic Poster Watermark (hero2.png) -->
-      <div class="hero-watermark-layer" aria-hidden="true">
-        <img 
-          src="./assets/hero2.png" 
-          alt="" 
-          class="hero-watermark-img" 
-          width="1743" 
-          height="1200" 
-          loading="eager">
+  <main id="main-content">
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <img class="hero-landscape" id="hero-landscape" src="./assets/background.jpg" alt="Yuichi standing alone in a sunlit green rice field, listening through headphones" width="3840" height="2160" fetchpriority="high">
+      <div class="hero-wash" aria-hidden="true"></div>
+      <div class="hero-content">
+        <p class="hero-japanese" lang="ja">リリイ・シュシュのすべて</p>
+        <h1 id="hero-title"><span>All about</span><span>Lily Chou-Chou.</span></h1>
+        <div class="hero-bottom"><div><p class="hero-description">Somewhere between the music<br>and the world outside.</p><div class="hero-actions"><a class="button button-light" href="#film">Find the Ether <span aria-hidden="true">↘</span></a><a class="hero-listen" href="#listening">Stay and listen <span aria-hidden="true">↗</span></a></div></div><a class="hero-fragment" href="#stills"><img src="./assets/background3.png" alt="A solitary figure under a violet evening sky" width="1436" height="807"><span>A different kind of quiet <span aria-hidden="true">↗</span></span></a></div>
       </div>
-
-      <div class="container hero-container">
-        
-        <!-- Hero Text & Value Proposition -->
-        <!-- Hero Text & Value Proposition -->
-        <div class="hero-text-content">
-          <div class="hero-badge-row">
-            <span class="hero-badge">ARCHIVE // LILYHOLIC</span>
-            <span class="hero-subbadge">ALIAS: PHILIA (フィリア)</span>
-            <span class="hero-year-tag">EST. 2001</span>
-          </div>
-          <h1 id="hero-title" class="hero-heading">Digital Sanctuaries in the Frequency of the Ether</h1>
-          <p class="hero-subtitle">
-            Creative developer, ambient sound designer, and archivist of digital stillness. Inspired by Shunji Iwai’s cinéma-vérité, Noboru Shinoda’s blinding natural sunlight, and the sacred frequencies of Lily Chou-Chou.
-          </p>
-          
-          <div class="hero-cta-group">
-            <a href="#projects" class="btn btn-primary" aria-label="Explore featured portfolio pieces">
-              <span>Enter Archives</span>
-              <span class="btn-kanji" aria-hidden="true">作品録</span>
-            </a>
-            <a href="#interactive" class="btn btn-outline" aria-label="Launch interactive audio terminal and archives">
-              <span class="discman-play-glyph" aria-hidden="true">▶</span>
-              <span>Discman Audio Unit</span>
-            </a>
-          </div>
-
-          <!-- Lilyholic BBS Transmission Banner (Replacing SaaS metrics) -->
-          <div class="hero-transmission-banner" role="region" aria-label="BBS Transmission Archive">
-            <div class="transmission-header">
-              <span class="transmission-indicator">● BBS TRANSMISSION #0104</span>
-              <span class="transmission-meta">LOG: LILYHOLIC.NET [2001-08-14 17:04:12 JST]</span>
-            </div>
-            <blockquote class="transmission-quote">
-              <span class="quote-author">[Philia]</span>
-              <span class="quote-text">“The Ether is all around us. When Lily sings, the wound doesn’t disappear—it just resonates at a higher frequency. Is there Ether in your world?”</span>
-            </blockquote>
-            <div class="transmission-footer">
-              <span class="telemetry-tag">SAMPLING: 44.1kHz / 16-BIT LINEAR PCM</span>
-              <span class="telemetry-tag">TERMINAL: D-E01 PORTABLE UNIT</span>
-            </div>
-          </div>
-
-          <!-- Interactive Horizon Frequency Tuner (Discman Tuner) -->
-          <div class="scenery-selector-bar" role="region" aria-label="Select hero background scenery">
-            <div class="scenery-bar-header">
-              <span class="scenery-bar-icon" aria-hidden="true">◉</span>
-              <span class="scenery-bar-label">HORIZON FREQUENCY TUNER:</span>
-            </div>
-            <div class="scenery-pills-group" role="radiogroup" aria-label="Hero background scenery choices">
-              <button 
-                type="button" 
-                class="scenery-pill active" 
-                data-bg="./assets/background.jpg" 
-                data-name="Verdant Solitude (Summer Rice Field)" 
-                role="radio" 
-                aria-checked="true" 
-                aria-label="Scene 01: Verdant Solitude (Summer Rice Field)">
-                <span class="scenery-code">[FREQ A]</span>
-                <span class="scenery-title">Verdant Field</span>
-              </button>
-              <button 
-                type="button" 
-                class="scenery-pill" 
-                data-bg="./assets/background2.jpg" 
-                data-name="Concert Sanctuary (The Glowing Screen)" 
-                role="radio" 
-                aria-checked="false" 
-                aria-label="Scene 02: Concert Sanctuary (The Glowing Screen)">
-                <span class="scenery-code">[FREQ B]</span>
-                <span class="scenery-title">Concert Screen</span>
-              </button>
-              <button 
-                type="button" 
-                class="scenery-pill" 
-                data-bg="./assets/background3.png" 
-                data-name="Wounded Autumn (Twilight Horizon)" 
-                role="radio" 
-                aria-checked="false" 
-                aria-label="Scene 03: Wounded Autumn (Twilight Horizon)">
-                <span class="scenery-code">[FREQ C]</span>
-                <span class="scenery-title">Twilight Plain</span>
-              </button>
-              <button 
-                type="button" 
-                data-bg="./assets/background4.jpg" 
-                data-name="Rural Pathway (Youth & Distance)" 
-                class="scenery-pill" 
-                role="radio" 
-                aria-checked="false" 
-                aria-label="Scene 04: Rural Pathway (Youth & Distance)">
-                <span class="scenery-code">[FREQ D]</span>
-                <span class="scenery-title">Rural Pathway</span>
-              </button>
-              <button 
-                type="button" 
-                class="scenery-pill" 
-                data-bg="./assets/background5.png" 
-                data-name="The Celestial Antenna (Transmission Tower)" 
-                role="radio" 
-                aria-checked="false" 
-                aria-label="Scene 05: The Celestial Antenna (Transmission Tower)">
-                <span class="scenery-code">[FREQ E]</span>
-                <span class="scenery-title">Transmission Tower</span>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Hero Cinematic Imagery with Sony HDW-F900 CineAlta Telemetry & Noboru Shinoda Net Filter -->
-        <div class="hero-visual">
-          <div class="hero-image-wrapper cinematic-letterbox">
-            <div class="scanline-overlay" aria-hidden="true"></div>
-            <div class="lens-haze-layer" aria-hidden="true"></div>
-            
-            <!-- Camera Viewfinder HUD (Sony HDW-F900 24p CineAlta) -->
-            <div class="viewfinder-hud-top" aria-hidden="true">
-              <div class="hud-left">
-                <span class="hud-rec-dot">● REC</span>
-                <span class="hud-fps">[23.98p CINEALTA]</span>
-              </div>
-              <div class="hud-right">
-                <span class="hdw-timecode" id="camera-timecode">TC 01:24:19:12</span>
-              </div>
-            </div>
-
-            <!-- Viewfinder Crosshair -->
-            <div class="viewfinder-crosshair" aria-hidden="true"></div>
-
-            <img 
-              src="./assets/hero.png" 
-              alt="Listener Philia standing solitary amidst a boundless green rice field wearing headphones and holding a portable CD player" 
-              class="hero-media-img"
-              width="600" 
-              height="338"
-              loading="eager">
-
-            <div class="cinematic-caption" aria-hidden="true">
-              <span class="aspect-ratio-tag">2.39:1 ANAMORPHIC</span>
-              <span class="film-stock-tag">SHINODA NET FILTER &bull; 35MM T1.3</span>
-            </div>
-
-            <div class="now-playing-badge" aria-hidden="true">
-              <span class="pulse-indicator"></span>
-              <span class="now-playing-text">ATMOSPHERE: <strong id="hero-scenery-name">Verdant Solitude (Summer Rice Field)</strong></span>
-            </div>
-          </div>
-        </div>
-
-      </div>
+      <div class="hero-caption"><span>A film by Shunji Iwai · 2001</span><span>An independent fan tribute</span></div>
     </section>
-
-    <!-- ======================================================= -->
-    <!-- SIGNATURE FEATURE: LILYHOLIC 2000 LIVE BBS STREAM       -->
-    <!-- Recreating the film's iconic black-screen intertitles   -->
-    <!-- ======================================================= -->
-    <aside class="bbs-ticker-tape" role="region" aria-label="Lilyholic BBS Intertitle Stream">
-      <div class="container bbs-ticker-container">
-        <div class="bbs-ticker-badge">
-          <span class="ticker-live-dot" aria-hidden="true">●</span>
-          <span class="ticker-label">LILYHOLIC.NET // ARCHIVAL FEED</span>
-        </div>
-        <div class="bbs-ticker-message-box">
-          <span class="bbs-typewriter-sender" id="bbs-sender">[Philia]:</span>
-          <span class="bbs-typewriter-text" id="bbs-text">The Ether is all around us... Her music is the only place where the pain subsides.</span>
-          <span class="bbs-cursor" aria-hidden="true">_</span>
-        </div>
-        <div class="bbs-ticker-controls">
-          <button type="button" class="btn-ticker-nav" id="btn-prev-quote" aria-label="Previous BBS transmission">◀ PREV</button>
-          <button type="button" class="btn-ticker-nav" id="btn-next-quote" aria-label="Next BBS transmission">NEXT ▶</button>
-        </div>
-      </div>
-    </aside>
-
-    <!-- ======================================================= -->
-    <!-- 3. CORE CONTENT SECTION: ABOUT ME (With background4.jpg)-->
-    <!-- ======================================================= -->
-    <section class="about-section" id="about" aria-labelledby="about-heading">
-      <!-- Vertical Japanese Calligraphy Watermark -->
-      <div class="vertical-kanji-watermark about-kanji-watermark" aria-hidden="true">リリィ・シュシュのすべて</div>
-
-      <div class="container">
-        <div class="section-header text-center">
-          <h2 id="about-heading" class="section-title">About Philia <span class="title-sub-kanji" aria-hidden="true">／ 呼吸と再生</span></h2>
-          <p class="section-lead">
-            A personal portfolio forged in the quiet intersection between early 2000s cyber-solitude, Debussy classical phrasing, and modern creative web technology.
-          </p>
-        </div>
-
-        <div class="about-content-layout">
-          <!-- Story Block -->
-          <article class="bio-narrative-card">
-            <h3 class="bio-title">Recreating the Atmosphere of Lily Chou-Chou</h3>
-            <p>
-              In Shunji Iwai’s landmark 2001 film <em>All About Lily Chou-Chou</em>, a high school boy escapes the brutal pressures of his reality by stepping into vast, sun-drenched rice fields with his Discman headphones. On the internet BBS board, under the handle <strong>Philia</strong>, he discovers the &ldquo;Ether&rdquo; (エーテル)—a cosmic, emotional frequency where pain dissolves into musical purity.
-            </p>
-            <p>
-              As a creator, I take this cinematographic philosophy as my design manifesto. In an era dominated by relentless algorithms and attention-seeking feeds, I design digital sanctuaries: web spaces that breathe, soundscapes that envelop, and interfaces that respect human stillness and contemplation.
-            </p>
-            
-            <div class="quote-box">
-              <blockquote cite="https://en.wikipedia.org/wiki/All_About_Lily_Chou-Chou">
-                &ldquo;The Ether is infinite. When you surrender your thoughts to the vibration, even solitude feels sacred.&rdquo;
-              </blockquote>
-              <cite class="quote-author">&mdash; Philia, BBS Forum Entry #012</cite>
-            </div>
-
-            <!-- Archival Poster Study Card Featuring hero2.png -->
-            <div class="archival-poster-badge">
-              <div class="poster-badge-thumb">
-                <img 
-                  src="./assets/hero2.png" 
-                  alt="Official 'All About Lily Chou-Chou' graphic typography poster artwork" 
-                  class="poster-badge-img" 
-                  width="320" 
-                  height="220" 
-                  loading="lazy">
-              </div>
-              <div class="poster-badge-caption">
-                <span class="badge-tag">Archival Typographic Study</span>
-                <h4 class="poster-badge-title">Title Sequencing &amp; Atmospheric Typography</h4>
-                <p>Ascending weights transitioning from faint hairline contours into vibrant sunset orange, mirroring the ascension of consciousness into the Ether.</p>
-              </div>
-            </div>
-          </article>
-
-          <!-- Right Column: Cinematographic Scene Study (hi.gif) + Pillars -->
-          <div class="pillars-column">
-            
-            <!-- Living Cinematographic Motion Study Featuring hi.gif -->
-            <figure class="scene-study-card" aria-labelledby="scene-study-caption">
-              <div class="scene-study-media">
-                <img 
-                  src="./assets/hi.gif" 
-                  alt="Cinematic excerpt from the movie depicting Shiori Tsuda spinning and gliding with outstretched arms amidst windswept tall green grass" 
-                  class="scene-study-gif" 
-                  width="250" 
-                  height="213" 
-                  loading="lazy">
-                <div class="scene-study-scanlines" aria-hidden="true"></div>
-                <span class="scene-study-tag">24fps Archival Film Motion</span>
-              </div>
-              <figcaption id="scene-study-caption" class="scene-study-caption">
-                <h4 class="scene-study-title">Scene Study: The Gliding Flight (Yu Aoi)</h4>
-                <p>Noboru Shinoda’s handheld camera kinetics capturing the visceral feeling of flight and weightlessness—the living embodiment of the anthem &ldquo;Glide&rdquo;.</p>
-              </figcaption>
-            </figure>
-
-            <article class="pillar-card">
-              <div class="pillar-icon" aria-hidden="true">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M2 12h5l3 8 4-16 3 8h5"></path>
-                </svg>
-              </div>
-              <div class="pillar-info">
-                <h4 class="pillar-heading">Acoustic Immersion</h4>
-                <p class="pillar-desc">
-                  Designing custom Web Audio synthesizer nodes, ambient field captures, and spatial soundscapes inspired by Takeshi Kobayashi and Salyu.
-                </p>
-              </div>
-            </article>
-
-            <article class="pillar-card">
-              <div class="pillar-icon" aria-hidden="true">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <circle cx="12" cy="12" r="4"></circle>
-                  <line x1="21.17" y1="8" x2="12" y2="8"></line>
-                  <line x1="3.95" y1="6.06" x2="8.54" y2="14"></line>
-                  <line x1="10.88" y1="21.94" x2="15.46" y2="14"></line>
-                </svg>
-              </div>
-              <div class="pillar-info">
-                <h4 class="pillar-heading">Cinematographic Lighting</h4>
-                <p class="pillar-desc">
-                  Replicating Noboru Shinoda’s iconic Sony digital camcorder look: radiant lens blooms, high-contrast greens, and deep twilight blacks.
-                </p>
-              </div>
-            </article>
-
-            <article class="pillar-card">
-              <div class="pillar-icon" aria-hidden="true">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="16 18 22 12 16 6"></polyline>
-                  <polyline points="8 6 2 12 8 18"></polyline>
-                </svg>
-              </div>
-              <div class="pillar-info">
-                <h4 class="pillar-heading">Pure Craftsmanship</h4>
-                <p class="pillar-desc">
-                  Zero bloated third-party dependencies. Built strictly on semantic HTML5 landmarks, modern CSS3 variables and Grid, and modular vanilla ES6+.
-                </p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </div>
+    <section class="film-section section-space container" id="film" aria-labelledby="film-title">
+      <div class="film-intro sticky-note"><p class="eyebrow">A place to return to</p><h2 id="film-title">Some films end.<br>This one <span class="inline-still" aria-hidden="true"></span> stays.</h2><p>A voice in your headphones. A name on a message board. A field so green it almost hurts to look at.</p><p><em>All About Lily Chou-Chou</em> follows Yuichi, a teenager who finds refuge in a singer’s music and the strangers who love it. Beauty and cruelty exist painfully close together.</p><a class="text-link" href="#bbs">Find a familiar feeling <span aria-hidden="true">↗</span></a></div>
+      <div class="film-grid"><figure class="film-frame scroll-image"><img src="./assets/background4.jpg" alt="Two school students sharing a moment on a narrow country road" width="1920" height="1080" loading="lazy"><figcaption>The ordinary moments that stay with us.</figcaption></figure><article class="film-note"><span class="small-japanese" lang="ja">光</span><h3>The light</h3><p>Noboru Shinoda’s images move between luminous fields and lonely screens. The landscape holds feelings the characters cannot say.</p></article><article class="film-note"><span class="small-japanese" lang="ja">声</span><h3>The voice</h3><p>Salyu gives Lily her voice, with music by Takeshi Kobayashi. For Yuichi, listening becomes a way of finding somewhere to belong.</p></article></div>
     </section>
-
-    <!-- ======================================================= -->
-    <!-- 3. CORE CONTENT SECTION: SKILLS GRID                    -->
-    <!-- ======================================================= -->
-    <section class="skills-section" id="skills" aria-labelledby="skills-heading">
-      <div class="container">
-        <div class="section-header text-center">
-          <h2 id="skills-heading" class="section-title">Technical Matrix <span class="title-sub-kanji" aria-hidden="true">／ 波動と構造</span></h2>
-          <p class="section-lead">
-            Harmonizing early-2000s cyber-solitude with pristine frontend standards, spatial audio architecture, and cinematic color science.
-          </p>
-        </div>
-
-        <div class="skills-grid">
-          <!-- Skill 1 -->
-          <article class="skill-card">
-            <div class="skill-header">
-              <span class="skill-category">[CH-01: ARCHITECTURE]</span>
-              <span class="skill-level" aria-label="Discipline focus: Foundation">Semantic W3C</span>
-            </div>
-            <h3 class="skill-title">Accessible HTML5 Standards</h3>
-            <p class="skill-text">
-              Strict adherence to W3C standards, WCAG 2.1 AA accessible landmarks, ARIA role mapping, and keyboard focus management.
-            </p>
-            <ul class="skill-tags" aria-label="Tags for HTML &amp; Accessibility">
-              <li>WCAG 2.1 AA</li>
-              <li>ARIA Semantics</li>
-              <li>Clean DOM</li>
-            </ul>
-          </article>
-
-          <!-- Skill 2 -->
-          <article class="skill-card">
-            <div class="skill-header">
-              <span class="skill-category">[CH-02: STYLING]</span>
-              <span class="skill-level" aria-label="Discipline focus: Aesthetics">Visual Poetry</span>
-            </div>
-            <h3 class="skill-title">Modern CSS3, Tokens &amp; Grid</h3>
-            <p class="skill-text">
-              Fluid responsive layouts, CSS Custom Properties, smooth cubic-bezier transitions, CRT scanline filters, and Dark/Light modes.
-            </p>
-            <ul class="skill-tags" aria-label="Tags for CSS &amp; Theming">
-              <li>CSS Grid / Flex</li>
-              <li>Tokens (:root)</li>
-              <li>CRT Scanlines</li>
-            </ul>
-          </article>
-
-          <!-- Skill 3 -->
-          <article class="skill-card">
-            <div class="skill-header">
-              <span class="skill-category">[CH-03: LOGIC]</span>
-              <span class="skill-level" aria-label="Discipline focus: Engineering">Zero-Dep</span>
-            </div>
-            <h3 class="skill-title">Modular Vanilla JS (ES6+)</h3>
-            <p class="skill-text">
-              Lightweight, modular, event-driven interactions, DOM state manipulation, modal controllers, and asynchronous data flows.
-            </p>
-            <ul class="skill-tags" aria-label="Tags for JavaScript">
-              <li>ES6 Modules</li>
-              <li>Event-Driven</li>
-              <li>Zero External Libs</li>
-            </ul>
-          </article>
-
-          <!-- Skill 4 -->
-          <article class="skill-card">
-            <div class="skill-header">
-              <span class="skill-category">[CH-04: ACOUSTICS]</span>
-              <span class="skill-level" aria-label="Discipline focus: Audio">Synthesis</span>
-            </div>
-            <h3 class="skill-title">Ambient Web Audio Design</h3>
-            <p class="skill-text">
-              Field recording synthesis, analogue tape warmth modeling, Debussy modal harmonies, and reactive audio visualizer development.
-            </p>
-            <ul class="skill-tags" aria-label="Tags for Sound Design">
-              <li>Web Audio API</li>
-              <li>Pentatonic Scales</li>
-              <li>Spectrum Bars</li>
-            </ul>
-          </article>
-
-          <!-- Skill 5 -->
-          <article class="skill-card">
-            <div class="skill-header">
-              <span class="skill-category">[CH-05: CINEMA]</span>
-              <span class="skill-level" aria-label="Discipline focus: Vision">Shinoda Homage</span>
-            </div>
-            <h3 class="skill-title">Cinematography &amp; Color Art</h3>
-            <p class="skill-text">
-              Recreation of high-exposure outdoor daylight, handheld camera kinetics, chromatic depth, and vintage 2001 film aesthetics.
-            </p>
-            <ul class="skill-tags" aria-label="Tags for Cinematography">
-              <li>Noboru Shinoda</li>
-              <li>Solar Exposure</li>
-              <li>Anamorphic 2.39:1</li>
-            </ul>
-          </article>
-
-          <!-- Skill 6 -->
-          <article class="skill-card">
-            <div class="skill-header">
-              <span class="skill-category">[CH-06: INTERACTION]</span>
-              <span class="skill-level" aria-label="Discipline focus: Culture">BBS Sanctuary</span>
-            </div>
-            <h3 class="skill-title">Atmospheric Interface Design</h3>
-            <p class="skill-text">
-              Harmonizing nostalgic digital bulletin-board nostalgia with modern high-conversion UI patterns and fluid motion choreography.
-            </p>
-            <ul class="skill-tags" aria-label="Tags for UI/UX Design">
-              <li>BBS Heritage</li>
-              <li>Tactile Controls</li>
-              <li>Restraint &amp; Stillness</li>
-            </ul>
-          </article>
-        </div>
-      </div>
+    <section class="landscapes section-space" id="stills" aria-labelledby="stills-title">
+      <div class="container section-heading"><div><p class="eyebrow">Through Noboru Shinoda’s lens</p><h2 id="stills-title">A feeling, held in a frame.</h2></div><p>Follow the light.<br>Choose a landscape to look a little closer.</p></div>
+      <div class="scene-accordion container"><article class="scene-panel is-active" data-scene="0">
+  <img src="./assets/background.jpg" alt="Yuichi standing among brilliant green rice plants" width="1920" height="1080" loading="lazy">
+  <button class="scene-trigger" type="button" aria-expanded="true" aria-controls="scene-detail-0"><span>Summer fields</span><span class="scene-plus" aria-hidden="true">+</span></button>
+  <div class="scene-detail" id="scene-detail-0"><p>The whole world turns green.</p><button class="scene-open" type="button" data-open-scene="0">View the still <span aria-hidden="true">↗</span></button></div>
+</article>
+<article class="scene-panel" data-scene="1">
+  <img src="./assets/background2.jpg" alt="A figure facing the glowing Lily Chou-Chou concert screen" width="1920" height="1080" loading="lazy">
+  <button class="scene-trigger" type="button" aria-expanded="false" aria-controls="scene-detail-1"><span>A voice in the dark</span><span class="scene-plus" aria-hidden="true">+</span></button>
+  <div class="scene-detail" id="scene-detail-1" hidden><p>Alone, in a crowd of listeners.</p><button class="scene-open" type="button" data-open-scene="1">View the still <span aria-hidden="true">↗</span></button></div>
+</article>
+<article class="scene-panel" data-scene="2">
+  <img src="./assets/background3.png" alt="Yuichi in a harvested field beneath the violet evening sky" width="1920" height="1080" loading="lazy">
+  <button class="scene-trigger" type="button" aria-expanded="false" aria-controls="scene-detail-2"><span>After the summer</span><span class="scene-plus" aria-hidden="true">+</span></button>
+  <div class="scene-detail" id="scene-detail-2" hidden><p>Even the silence changes colour.</p><button class="scene-open" type="button" data-open-scene="2">View the still <span aria-hidden="true">↗</span></button></div>
+</article>
+<article class="scene-panel" data-scene="3">
+  <img src="./assets/background4.jpg" alt="School students walking along a narrow country road" width="1920" height="1080" loading="lazy">
+  <button class="scene-trigger" type="button" aria-expanded="false" aria-controls="scene-detail-3"><span>The way home</span><span class="scene-plus" aria-hidden="true">+</span></button>
+  <div class="scene-detail" id="scene-detail-3" hidden><p>A small moment, before it is gone.</p><button class="scene-open" type="button" data-open-scene="3">View the still <span aria-hidden="true">↗</span></button></div>
+</article>
+<article class="scene-panel" data-scene="4">
+  <img src="./assets/background5.png" alt="A transmission tower and red kites against a blue sky" width="1920" height="1080" loading="lazy">
+  <button class="scene-trigger" type="button" aria-expanded="false" aria-controls="scene-detail-4"><span>Somewhere above</span><span class="scene-plus" aria-hidden="true">+</span></button>
+  <div class="scene-detail" id="scene-detail-4" hidden><p>Something invisible connects us.</p><button class="scene-open" type="button" data-open-scene="4">View the still <span aria-hidden="true">↗</span></button></div>
+</article></div>
+      <div class="container landscape-footnote"><span>Film stills from <em>All About Lily Chou-Chou</em></span><span>Personal reflections, not dialogue from the film.</span></div>
     </section>
-
-    <!-- ======================================================= -->
-    <!-- 3. CORE CONTENT SECTION: FEATURED PROJECTS GRID         -->
-    <!-- (With background3.png)                                  -->
-    <!-- ======================================================= -->
-    <section class="projects-section" id="projects" aria-labelledby="projects-heading">
-      <!-- Vertical Japanese Calligraphy Watermark -->
-      <div class="vertical-kanji-watermark projects-kanji-watermark" aria-hidden="true">電脳空間の聖域</div>
-
-      <div class="container">
-        <div class="section-header text-center">
-          <span class="section-tag">LILYHOLIC BBS ARCHIVES // 作品録</span>
-          <h2 id="projects-heading" class="section-title">The Ether Repository: Selected Archives</h2>
-          <p class="section-lead">
-            Catalogue raisonné of digital sanctuaries, acoustic synthesizers, and cinematographic studies. Preserved from the 2001 BBS era.
-          </p>
-        </div>
-
-        <div class="projects-grid">
-          <!-- Project 1: Glide Melodic Player -->
-          <article class="project-card bbs-thread-card" aria-labelledby="proj-1-title">
-            <div class="bbs-kanji-pillar" aria-hidden="true">呼吸</div>
-            <div class="bbs-card-main">
-              <header class="project-header bbs-thread-header">
-                <div class="bbs-meta-group">
-                  <span class="bbs-thread-id">[POST #0101]</span>
-                  <span class="bbs-author">AUTHOR: PHILIA</span>
-                  <span class="bbs-time">2001.08.17 02:44 JST</span>
-                </div>
-                <span class="project-tag">Interactive Audio // Web App</span>
-              </header>
-              <div class="project-body">
-                <h3 id="proj-1-title" class="project-title">Project Glide: The Ether Audio Station</h3>
-                <p class="project-desc">
-                  A custom vanilla web audio interface reproducing the tactile sonic presence of an early-2000s Discman. Features dynamic spectrum frequency animation, timeline scrubbing, and lossless linear PCM streaming.
-                </p>
-                <ul class="project-spec-list" aria-label="Key specifications for Project Glide">
-                  <li><span class="spec-highlight">Architecture:</span> Vanilla JS &bull; Web Audio API &bull; CSS Custom Tokens</li>
-                  <li><span class="spec-highlight">Atmosphere:</span> Claude Debussy Pentatonics &bull; Minimalist LCD Emulation</li>
-                </ul>
-              </div>
-              <footer class="project-footer">
-                <button 
-                  type="button" 
-                  class="btn btn-text open-modal-btn" 
-                  data-track="glide" 
-                  aria-label="View case study and liner notes for Project Glide">
-                  <span>Archival Liner Notes</span>
-                  <span aria-hidden="true">&rarr;</span>
-                </button>
-              </footer>
-            </div>
-          </article>
-
-          <!-- Project 2: Resonance BBS Archive -->
-          <article class="project-card bbs-thread-card" aria-labelledby="proj-2-title">
-            <div class="bbs-kanji-pillar" aria-hidden="true">共鳴</div>
-            <div class="bbs-card-main">
-              <header class="project-header bbs-thread-header">
-                <div class="bbs-meta-group">
-                  <span class="bbs-thread-id">[POST #0102]</span>
-                  <span class="bbs-author">AUTHOR: BLUE CAT</span>
-                  <span class="bbs-time">2001.08.23 23:19 JST</span>
-                </div>
-                <span class="project-tag">Web Platform // Community</span>
-              </header>
-              <div class="project-body">
-                <h3 id="proj-2-title" class="project-title">Resonance BBS: Digital Solitude Forum</h3>
-                <p class="project-desc">
-                  An authentic recreation of the web forum interface from <em>All About Lily Chou-Chou</em>. Monochromatic text over green and obsidian backdrops where users shared raw poetry and anonymous memories.
-                </p>
-                <ul class="project-spec-list" aria-label="Key specifications for Resonance BBS">
-                  <li><span class="spec-highlight">Architecture:</span> Accessible HTML5 &bull; CSS Grid &bull; Local Storage</li>
-                  <li><span class="spec-highlight">Atmosphere:</span> 2001 Cyber Nostalgia &bull; High Contrast Text</li>
-                </ul>
-              </div>
-              <footer class="project-footer">
-                <button 
-                  type="button" 
-                  class="btn btn-text open-modal-btn" 
-                  data-track="kyoumei" 
-                  aria-label="View case study for Resonance BBS">
-                  <span>Archival Liner Notes</span>
-                  <span aria-hidden="true">&rarr;</span>
-                </button>
-              </footer>
-            </div>
-          </article>
-
-          <!-- Project 3: Kokyuu Sound Architecture -->
-          <article class="project-card bbs-thread-card" aria-labelledby="proj-3-title">
-            <div class="bbs-kanji-pillar" aria-hidden="true">回復</div>
-            <div class="bbs-card-main">
-              <header class="project-header bbs-thread-header">
-                <div class="bbs-meta-group">
-                  <span class="bbs-thread-id">[POST #0103]</span>
-                  <span class="bbs-author">AUTHOR: CORINE</span>
-                  <span class="bbs-time">2001.09.02 14:08 JST</span>
-                </div>
-                <span class="project-tag">Sound Design // Spatial Audio</span>
-              </header>
-              <div class="project-body">
-                <h3 id="proj-3-title" class="project-title">Kokyuu (Breathe) Sound Experience</h3>
-                <p class="project-desc">
-                  An ambient sound suite deconstructing the track &ldquo;Kokyuu&rdquo;. Combines binaural field recordings of wind whispering through Kanto rice stalks with acoustic cello and Debussy-style piano chords.
-                </p>
-                <ul class="project-spec-list" aria-label="Key specifications for Kokyuu Sound Architecture">
-                  <li><span class="spec-highlight">Architecture:</span> Binaural Field Audio &bull; Analog Tape Master</li>
-                  <li><span class="spec-highlight">Atmosphere:</span> Claude Debussy &bull; Salyu Harmonics</li>
-                </ul>
-              </div>
-              <footer class="project-footer">
-                <button 
-                  type="button" 
-                  class="btn btn-text open-modal-btn" 
-                  data-track="kaifuku" 
-                  aria-label="View case study for Kokyuu Sound Experience">
-                  <span>Archival Liner Notes</span>
-                  <span aria-hidden="true">&rarr;</span>
-                </button>
-              </footer>
-            </div>
-          </article>
-
-          <!-- Project 4: Shinoda Cinematic Lens Study -->
-          <article class="project-card bbs-thread-card" aria-labelledby="proj-4-title">
-            <div class="bbs-kanji-pillar" aria-hidden="true">田園</div>
-            <div class="bbs-card-main">
-              <header class="project-header bbs-thread-header">
-                <div class="bbs-meta-group">
-                  <span class="bbs-thread-id">[POST #0104]</span>
-                  <span class="bbs-author">AUTHOR: PHILIA</span>
-                  <span class="bbs-time">2001.09.11 18:30 JST</span>
-                </div>
-                <span class="project-tag">Cinematography // Visual Art</span>
-              </header>
-              <div class="project-body">
-                <h3 id="proj-4-title" class="project-title">Verdant Solitude: Photographic Essay</h3>
-                <p class="project-desc">
-                  A visual narrative captured on digital cinema lenses paying homage to Noboru Shinoda’s cinematography. Capturing solitary subjects bathed in summer sun amidst boundless rice fields.
-                </p>
-                <ul class="project-spec-list" aria-label="Key specifications for Verdant Solitude">
-                  <li><span class="spec-highlight">Architecture:</span> High Dynamic Range &bull; Color Science LUTs</li>
-                  <li><span class="spec-highlight">Atmosphere:</span> Solar Overexposure &bull; Saturated Verdant Green</li>
-                </ul>
-              </div>
-              <footer class="project-footer">
-                <button 
-                  type="button" 
-                  class="btn btn-text open-modal-btn" 
-                  data-track="tsubasa" 
-                  aria-label="View case study for Verdant Solitude">
-                  <span>Archival Liner Notes</span>
-                  <span aria-hidden="true">&rarr;</span>
-                </button>
-              </footer>
-            </div>
-          </article>
-
-          <!-- Project 5: The Blue Ether Protocol -->
-          <article class="project-card bbs-thread-card" aria-labelledby="proj-5-title">
-            <div class="bbs-kanji-pillar" aria-hidden="true">飽和</div>
-            <div class="bbs-card-main">
-              <header class="project-header bbs-thread-header">
-                <div class="bbs-meta-group">
-                  <span class="bbs-thread-id">[POST #0105]</span>
-                  <span class="bbs-author">AUTHOR: BLUE CAT</span>
-                  <span class="bbs-time">2001.10.05 03:15 JST</span>
-                </div>
-                <span class="project-tag">Generative Art // Canvas</span>
-              </header>
-              <div class="project-body">
-                <h3 id="proj-5-title" class="project-title">The Blue Ether Generative Canvas</h3>
-                <p class="project-desc">
-                  An interactive real-time particle simulation responding to microtonal sound input. Simulates the flow of &ldquo;Ether waves&rdquo; transitioning from dissonant red to soothing, healing blue.
-                </p>
-                <ul class="project-spec-list" aria-label="Key specifications for The Blue Ether Protocol">
-                  <li><span class="spec-highlight">Architecture:</span> HTML5 Canvas &bull; Particle Physics Engine</li>
-                  <li><span class="spec-highlight">Atmosphere:</span> Fluid Dynamics &bull; CRT Phosphor Glow</li>
-                </ul>
-              </div>
-              <footer class="project-footer">
-                <button 
-                  type="button" 
-                  class="btn btn-text open-modal-btn" 
-                  data-track="houwa" 
-                  aria-label="View case study for The Blue Ether Protocol">
-                  <span>Archival Liner Notes</span>
-                  <span aria-hidden="true">&rarr;</span>
-                </button>
-              </footer>
-            </div>
-          </article>
-
-          <!-- Project 6: Arabesque No. 1 Interactive -->
-          <article class="project-card bbs-thread-card" aria-labelledby="proj-6-title">
-            <div class="bbs-kanji-pillar" aria-hidden="true">印象</div>
-            <div class="bbs-card-main">
-              <header class="project-header bbs-thread-header">
-                <div class="bbs-meta-group">
-                  <span class="bbs-thread-id">[POST #0106]</span>
-                  <span class="bbs-author">AUTHOR: PHILIA</span>
-                  <span class="bbs-time">2001.10.17 21:00 JST</span>
-                </div>
-                <span class="project-tag">Musicology // Web Interactive</span>
-              </header>
-              <div class="project-body">
-                <h3 id="proj-6-title" class="project-title">Debussy to Chou-Chou: Harmonic Bridges</h3>
-                <p class="project-desc">
-                  An educational interactive article analyzing how Claude Debussy's Impressionist scales directly influenced Takeshi Kobayashi’s chord structures and Lily Chou-Chou’s vocal modulations.
-                </p>
-                <ul class="project-spec-list" aria-label="Key specifications for Arabesque No. 1 Interactive">
-                  <li><span class="spec-highlight">Architecture:</span> Interactive SVG Score &bull; Sound Synthesis</li>
-                  <li><span class="spec-highlight">Atmosphere:</span> French Impressionism &bull; J-Alt Rock</li>
-                </ul>
-              </div>
-              <footer class="project-footer">
-                <button 
-                  type="button" 
-                  class="btn btn-text open-modal-btn" 
-                  data-track="glide-single" 
-                  aria-label="View case study for Debussy to Chou-Chou">
-                  <span>Archival Liner Notes</span>
-                  <span aria-hidden="true">&rarr;</span>
-                </button>
-              </footer>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======================================================= -->
-    <!-- 4. INTERACTIVE COMPONENT CONTAINER                      -->
-    <!-- (With background2.jpg Concert Backdrop)                 -->
-    <!-- ======================================================= -->
-    <section class="interactive-section" id="interactive" aria-labelledby="interactive-title">
-      <!-- Vertical Japanese Calligraphy Watermark -->
-      <div class="vertical-kanji-watermark interactive-kanji-watermark" aria-hidden="true">四十四・一キロヘルツ</div>
-
-      <div class="container">
-        <div class="section-header text-center">
-          <h2 id="interactive-title" class="section-title">The Ether Sound Console <span class="title-sub-kanji" aria-hidden="true">／ 音響再生機</span></h2>
-          <p class="section-lead">
-            Interact with our live simulation station. Filter portfolio entries, audition simulated audio playback with motion vignettes, and inspect archival film stills.
-          </p>
-        </div>
-
-        <div class="interactive-component-container">
-          
-          <!-- Component 1: Category Filter Controls (Enhanced with 'scenery' tab) -->
-          <div class="filter-controls-wrapper" role="group" aria-label="Filter portfolio and archive entries">
-            <span class="filter-label">Filter Archival Pieces:</span>
-            <div class="filter-btn-group">
-              <button type="button" class="filter-btn active" data-filter="all" aria-pressed="true">All Works</button>
-              <button type="button" class="filter-btn" data-filter="sound" aria-pressed="false">Sound &amp; Audio</button>
-              <button type="button" class="filter-btn" data-filter="visual" aria-pressed="false">Visual &amp; Film</button>
-              <button type="button" class="filter-btn" data-filter="code" aria-pressed="false">Web &amp; Code</button>
-              <button type="button" class="filter-btn" data-filter="scenery" aria-pressed="false">Cinematography Stills</button>
-            </div>
-          </div>
-
-          <!-- Dynamic Filterable Items Grid -->
-          <div class="filtered-items-grid" id="filtered-items-grid" aria-live="polite">
-            <article class="interactive-card" data-category="sound">
-              <div class="card-badge">Audio Craft</div>
-              <h3 class="card-title">Kokyuu Analogue Reel Restoration</h3>
-              <p class="card-text">Studio recorded 96kHz/24-bit masters with bespoke tube saturation for pristine dynamic warmth.</p>
-              <span class="card-meta">Field: Tokyo Sound Lab</span>
-            </article>
-
-            <article class="interactive-card" data-category="visual">
-              <div class="card-badge">Cinematography</div>
-              <h3 class="card-title">Kanto Rice Fields at Golden Hour</h3>
-              <p class="card-text">Photographic recreation of Hasumi Yuichi's solitude scene under high-contrast sun flare.</p>
-              <span class="card-meta">Aspect: 16:9 Anamorphic</span>
-            </article>
-
-            <article class="interactive-card" data-category="code">
-              <div class="card-badge">Web Architecture</div>
-              <h3 class="card-title">Zero-Dependency Accessible Player</h3>
-              <p class="card-text">Engineered strictly with vanilla ES6+ and WCAG 2.1 accessible keyboard navigation and ARIA labels.</p>
-              <span class="card-meta">Tech: Vanilla HTML/CSS/JS</span>
-            </article>
-
-            <article class="interactive-card" data-category="sound">
-              <div class="card-badge">Sound Craft</div>
-              <h3 class="card-title">Binaural Wind &amp; Discman Echo</h3>
-              <p class="card-text">Atmospheric soundscape mimicking the sound of open-air headphone leakage amidst gentle summer breeze.</p>
-              <span class="card-meta">Format: Binaural 3D Audio</span>
-            </article>
-
-            <article class="interactive-card" data-category="code">
-              <div class="card-badge">Web Architecture</div>
-              <h3 class="card-title">BBS Message Board Simulator</h3>
-              <p class="card-text">Retro bulletin board system interface with local persistence and accessible live screen reader announcements.</p>
-              <span class="card-meta">Tech: DOM State Engine</span>
-            </article>
-
-            <article class="interactive-card" data-category="visual">
-              <div class="card-badge">Cinematography</div>
-              <h3 class="card-title">Debussy Arabesque Piano Study</h3>
-              <p class="card-text">Short film exploring the connection between Claude Debussy's classical impressionism and modern alienation.</p>
-              <span class="card-meta">Medium: Digital 24fps</span>
-            </article>
-
-            <!-- Background Still 1: background.jpg -->
-            <article class="interactive-card still-card" data-category="scenery">
-              <div class="still-thumb-frame">
-                <img src="./assets/background.jpg" alt="Verdant summer rice field at golden hour" class="still-thumb-img" loading="lazy">
-                <span class="still-badge">Still 01</span>
-              </div>
-              <h3 class="card-title">Scene 01: Verdant Solitude</h3>
-              <p class="card-text">Hasumi immersed in sound within the boundless summer rice field. Noboru Shinoda's landmark high-contrast digital daylight.</p>
-              <div class="still-actions">
-                <button type="button" class="btn btn-text open-modal-btn" data-track="bg1">Cinematography Notes &rarr;</button>
-                <button type="button" class="btn btn-outline btn-sm apply-bg-btn" data-bg="./assets/background.jpg" data-name="Verdant Solitude (Summer Rice Field)">Set as Horizon</button>
-              </div>
-            </article>
-
-            <!-- Background Still 2: background2.jpg -->
-            <article class="interactive-card still-card" data-category="scenery">
-              <div class="still-thumb-frame">
-                <img src="./assets/background2.jpg" alt="Concert sanctuary with glowing Lily Chou-Chou screen" class="still-thumb-img" loading="lazy">
-                <span class="still-badge">Still 02</span>
-              </div>
-              <h3 class="card-title">Scene 02: Concert Sanctuary</h3>
-              <p class="card-text">Hasumi facing the monolithic illuminated CRT stadium display of 'Lily Chou-Chou' in the rainy night.</p>
-              <div class="still-actions">
-                <button type="button" class="btn btn-text open-modal-btn" data-track="bg2">Cinematography Notes &rarr;</button>
-                <button type="button" class="btn btn-outline btn-sm apply-bg-btn" data-bg="./assets/background2.jpg" data-name="Concert Sanctuary (The Glowing Screen)">Set as Horizon</button>
-              </div>
-            </article>
-
-            <!-- Background Still 3: background3.png -->
-            <article class="interactive-card still-card" data-category="scenery">
-              <div class="still-thumb-frame">
-                <img src="./assets/background3.png" alt="Hasumi in winter coat on twilight autumn harvested fields" class="still-thumb-img" loading="lazy">
-                <span class="still-badge">Still 03</span>
-              </div>
-              <h3 class="card-title">Scene 03: Wounded Autumn</h3>
-              <p class="card-text">Hasumi in winter coat and duffle bag standing in the plowed field under an eerie lilac-lavender twilight sky.</p>
-              <div class="still-actions">
-                <button type="button" class="btn btn-text open-modal-btn" data-track="bg3">Cinematography Notes &rarr;</button>
-                <button type="button" class="btn btn-outline btn-sm apply-bg-btn" data-bg="./assets/background3.png" data-name="Wounded Autumn (Twilight Horizon)">Set as Horizon</button>
-              </div>
-            </article>
-
-            <!-- Background Still 4: background4.jpg -->
-            <article class="interactive-card still-card" data-category="scenery">
-              <div class="still-thumb-frame">
-                <img src="./assets/background4.jpg" alt="Tsuda and Hasumi walking along narrow rural pathway" class="still-thumb-img" loading="lazy">
-                <span class="still-badge">Still 04</span>
-              </div>
-              <h3 class="card-title">Scene 04: Rural Pathway</h3>
-              <p class="card-text">Intimate handheld shot of Tsuda kicking her feet playfully as she walks beside Hasumi along the country road.</p>
-              <div class="still-actions">
-                <button type="button" class="btn btn-text open-modal-btn" data-track="bg4">Cinematography Notes &rarr;</button>
-                <button type="button" class="btn btn-outline btn-sm apply-bg-btn" data-bg="./assets/background4.jpg" data-name="Rural Pathway (Youth & Distance)">Set as Horizon</button>
-              </div>
-            </article>
-
-            <!-- Background Still 5: background5.png -->
-            <article class="interactive-card still-card" data-category="scenery">
-              <div class="still-thumb-frame">
-                <img src="./assets/background5.png" alt="Transmission tower with kites and rainbow flare in cerulean sky" class="still-thumb-img" loading="lazy">
-                <span class="still-badge">Still 05</span>
-              </div>
-              <h3 class="card-title">Scene 05: The Celestial Antenna</h3>
-              <p class="card-text">Soaring telecommunications tower with red kites dancing in deep blue sky and circular prismatic lens flare.</p>
-              <div class="still-actions">
-                <button type="button" class="btn btn-text open-modal-btn" data-track="bg5">Cinematography Notes &rarr;</button>
-                <button type="button" class="btn btn-outline btn-sm apply-bg-btn" data-bg="./assets/background5.png" data-name="The Celestial Antenna (Transmission Tower)">Set as Horizon</button>
-              </div>
-            </article>
-          </div>
-
-          <!-- Component 2: Dynamic Tactile Discman Optical System (Web Audio API Synthesizer) -->
-          <div class="player-console discman-unit" id="discman-chassis" role="region" aria-label="Dynamic Tactile Discman Optical System">
-            <!-- Hardware Chassis Top Bar with Door Eject & Telemetry -->
+    <section class="listening-section section-space" id="listening" aria-labelledby="listening-title"><div class="container listening-layout">
+      <div class="listening-copy sticky-note"><p class="eyebrow">Headphones recommended</p><h2 id="listening-title">Let the outside<br>world fall away.</h2><p>Open the lid. Choose a track.<br>Take a breath and stay for a while.</p><p class="audio-disclosure">This Discman streams audio from the album 呼吸 (Kokyuu) by Lily Chou-Chou (composed by Takeshi Kobayashi, vocals by Salyu). All master recordings and musical works are the property of their respective copyright holders (Takeshi Kobayashi, Salyu, OORONG-SHA / avex trax). This website is a strictly non-commercial fan tribute and claims no ownership over any music or media.</p><div class="listening-detail"><span class="listening-dot" aria-hidden="true"></span><span>Sound starts only when you choose.</span></div><a class="text-link" href="https://music.apple.com/search?term=Lily%20Chou-Chou%20Kokyuu" target="_blank" rel="noopener noreferrer">Find the original soundtrack <span aria-hidden="true">↗</span><span class="sr-only"> on Apple Music, opens a new tab</span></a></div>
+      <div class="listening-device">          <div class="player-console discman-unit" id="discman-chassis" role="region" aria-label="Ambient Discman player">
             <div class="discman-chassis-top">
               <div class="discman-brand-group">
-                <span class="discman-brand">OPTICAL DISC SYSTEM // SONY D-E01 ARCHIVE</span>
+                <span class="discman-brand">THE ETHER / PORTABLE LISTENING ROOM</span>
                 <span class="discman-disc-spinning-icon" id="disc-spin-indicator" aria-hidden="true">( ( ◎ ) )</span>
               </div>
               <div class="discman-top-actions">
@@ -968,11 +84,10 @@
               </div>
             </div>
 
-            <!-- Discman LCD Telemetry Bar -->
             <div class="player-header">
               <div class="player-status">
                 <span class="player-led" aria-hidden="true"></span>
-                <span id="player-status-text">DISC LOADED: READY</span>
+                <span id="player-status-text">READY WHEN YOU ARE</span>
               </div>
               <div class="player-time-group">
                 <span class="player-sample-rate">16-BIT 44.1kHz</span>
@@ -980,79 +95,70 @@
               </div>
             </div>
 
-            <!-- Viewport Switcher Tabs (Spindle Drive vs Motion Screen vs Oscilloscope) -->
             <div class="discman-viewport-tabs" role="tablist" aria-label="Disc player view modes">
               <button type="button" class="viewport-tab active" id="tab-spindle" role="tab" aria-selected="true" aria-controls="view-spindle">
-                <span>CD SPINDLE DRIVE</span>
+                <span>THE DISC</span>
               </button>
-              <button type="button" class="viewport-tab" id="tab-motion" role="tab" aria-selected="false" aria-controls="view-motion">
-                <span>CRT MOTION SCREEN</span>
+              <button type="button" class="viewport-tab" tabindex="-1" id="tab-motion" role="tab" aria-selected="false" aria-controls="view-motion">
+                <span>THE FIELD</span>
               </button>
-              <button type="button" class="viewport-tab" id="tab-scope" role="tab" aria-selected="false" aria-controls="view-scope">
-                <span>LIVE OSCILLOSCOPE</span>
+              <button type="button" class="viewport-tab" tabindex="-1" id="tab-scope" role="tab" aria-selected="false" aria-controls="view-scope">
+                <span>THE WAVES</span>
               </button>
             </div>
 
-            <!-- Viewport Container -->
             <div class="discman-viewport-stage">
-              <!-- View 1: Physical Spinning Compact Disc Spindle Bay -->
               <div class="viewport-panel view-spindle-panel active" id="view-spindle" role="tabpanel" aria-labelledby="tab-spindle">
-                <div class="cd-spindle-bay" id="cd-spindle-bay">
+                <div class="cd-spindle-bay" id="cd-spindle-bay" role="button" tabindex="0" aria-label="Play or pause ambient chimes">
                   <div class="optical-laser-head" id="laser-head" aria-hidden="true">
                     <span class="laser-lens-diode"></span>
                     <span class="laser-sled-label">OPTICAL PICKUP</span>
                   </div>
-                  <!-- The Spinning CD Disc -->
                   <div class="compact-disc" id="physical-compact-disc" aria-hidden="true">
                     <div class="cd-outer-rim"></div>
                     <div class="cd-rainbow-sheen"></div>
                     <div class="cd-silk-screen">
                       <span class="cd-logo">Ç</span>
-                      <span class="cd-album-print" id="cd-print-album">KOKYUU</span>
-                      <span class="cd-track-print" id="cd-print-track">GLIDE</span>
+                      <span class="cd-album-print" id="cd-print-album">呼吸 (KOKYUU)</span>
+                      <span class="cd-track-print" id="cd-print-track">01. アラベスク</span>
                     </div>
                     <div class="cd-inner-mirror"></div>
                     <div class="cd-center-hole"></div>
                   </div>
-                  <!-- Door Open Warning Overlay -->
                   <div class="cd-lid-overlay" id="cd-lid-open-indicator" hidden>
                     <span class="lid-warning-text">LID OPEN // INSERT COMPACT DISC</span>
                   </div>
                 </div>
               </div>
 
-              <!-- View 2: CRT Motion Screen (hi.gif) -->
               <div class="viewport-panel view-motion-panel" id="view-motion" role="tabpanel" aria-labelledby="tab-motion" hidden>
-                <div class="player-visual-screen" id="player-visual-screen">
-                  <img 
-                    src="./assets/hi.gif" 
-                    alt="Animated scene from the film depicting Tsuda spinning with outstretched arms in the green field" 
-                    class="player-screen-media" 
-                    width="250" 
+                <div class="player-visual-screen" id="player-visual-screen" role="button" tabindex="0" aria-label="Play or pause ambient chimes">
+                  <img
+                    src="./assets/hi.gif"
+                    alt="Animated scene from the film depicting Tsuda spinning with outstretched arms in the green field"
+                    class="player-screen-media" loading="lazy"
+                    width="250"
                     height="213">
-                  <div class="player-screen-overlay" aria-hidden="true">
+                  <img class="player-screen-still" src="./assets/hero.png" alt="A listener standing in a green rice field" width="600" height="338"><div class="player-screen-overlay" aria-hidden="true">
                     <span class="screen-scanlines"></span>
-                    <span class="screen-track-indicator" id="motion-track-indicator">TRACK 01: GLIDE &bull; 44.1kHz DIGITAL ETHER</span>
+                    <span class="screen-track-indicator" id="motion-track-indicator">01. アラベスク · 呼吸 (KOKYUU)</span>
                   </div>
                 </div>
               </div>
 
-              <!-- View 3: Live Web Audio Oscilloscope Canvas -->
               <div class="viewport-panel view-scope-panel" id="view-scope" role="tabpanel" aria-labelledby="tab-scope" hidden>
-                <div class="oscilloscope-screen">
+                <div class="oscilloscope-screen" role="button" tabindex="0" aria-label="Change waveform colour">
                   <canvas id="discman-oscilloscope" width="340" height="170" aria-label="Live audio frequency oscilloscope canvas"></canvas>
                   <div class="scope-grid-overlay" aria-hidden="true"></div>
                   <span class="scope-telemetry-tag">LIVE FFT // PHOSPHOR TRACE</span>
                 </div>
               </div>
             </div>
-
             <div class="player-track-info">
-              <h3 class="player-track-name" id="current-track-name">Glide — Lily Chou-Chou</h3>
-              <p class="player-track-sub" id="current-track-album">Album: Kokyuu (呼吸) • Track 01</p>
+              <h3 class="player-track-name" id="current-track-name">アラベスク</h3>
+              <p class="player-track-sub" id="current-track-album">呼吸 (Kokyuu) · Track 01</p>
             </div>
 
-            <!-- Dynamic Equalizer / Visualizer Bars (Real-time reactive) -->
             <div class="player-visualizer" id="audio-visualizer" aria-hidden="true">
               <div class="vis-bar"></div>
               <div class="vis-bar"></div>
@@ -1068,466 +174,115 @@
               <div class="vis-bar"></div>
             </div>
 
-            <!-- Tactile Discman Playback Controls -->
             <div class="player-controls">
               <button type="button" class="ctrl-btn" id="ctrl-prev" aria-label="Previous Track">
                 <span class="ctrl-symbol" aria-hidden="true">◀◀</span>
                 <span class="ctrl-label">PREV</span>
               </button>
-
               <button type="button" class="ctrl-btn ctrl-play" id="ctrl-play" aria-label="Play current track">
                 <span class="icon-play ctrl-symbol" aria-hidden="true">▶</span>
                 <span class="icon-pause ctrl-symbol" aria-hidden="true" style="display: none;">❚❚</span>
                 <span class="ctrl-label" id="ctrl-play-label">PLAY</span>
               </button>
-
               <button type="button" class="ctrl-btn ctrl-stop" id="ctrl-stop" aria-label="Stop playback">
                 <span class="ctrl-symbol" aria-hidden="true">■</span>
                 <span class="ctrl-label">STOP</span>
               </button>
-
               <button type="button" class="ctrl-btn" id="ctrl-next" aria-label="Next Track">
                 <span class="ctrl-symbol" aria-hidden="true">▶▶</span>
                 <span class="ctrl-label">NEXT</span>
               </button>
             </div>
 
-            <!-- Scrubbing Bar -->
             <div class="player-progress-container">
               <label for="track-scrubber" class="sr-only">Seek Track Position</label>
-              <input 
-                type="range" 
-                id="track-scrubber" 
-                class="track-scrubber" 
-                min="0" 
-                max="100" 
-                value="0" 
+              <input
+                type="range"
+                id="track-scrubber"
+                class="track-scrubber"
+                min="0"
+                max="100"
+                value="0"
                 aria-label="Track progress scrubber"
-                aria-valuemin="0" 
-                aria-valuemax="100" 
+                aria-valuemin="0"
+                aria-valuemax="100"
                 aria-valuenow="0">
             </div>
 
-            <!-- Tactile Hardware Output Volume Control -->
             <div class="discman-volume-row">
               <span class="volume-label">OUTPUT VOL:</span>
-              <input 
-                type="range" 
-                id="discman-volume" 
-                class="volume-slider" 
-                min="0" 
-                max="100" 
-                value="75" 
+              <input
+                type="range"
+                id="discman-volume"
+                class="volume-slider"
+                min="0"
+                max="100"
+                value="75"
                 aria-label="Master output volume">
               <span class="volume-value-text" id="volume-val-display">75%</span>
             </div>
 
-            <!-- Discography Jewel Case Rack: Click to Insert CD -->
-            <div class="cd-jewel-case-rack" role="region" aria-label="CD Jewel Case Rack — Select Disc to Load">
+            <div class="cd-jewel-case-rack" role="region" aria-label="CD Jewel Case Rack — Select Track to Load">
               <div class="rack-header">
-                <span class="rack-title">DISC VAULT // SELECT CD TO LOAD:</span>
-                <span class="rack-hint">Click a CD to insert it into spindle</span>
+                <span class="rack-title">ALBUM: 呼吸 (KOKYUU)</span>
+                <span class="rack-hint">9 Tracks · Lily Chou-Chou</span>
               </div>
-              <div class="rack-grid" role="radiogroup" aria-label="Selectable CDs">
+              <div class="rack-grid" role="radiogroup" aria-label="Selectable Album Tracks">
                 <button type="button" class="jewel-case active" data-track-index="0" role="radio" aria-checked="true">
                   <span class="jewel-spine">[CD 01]</span>
-                  <span class="jewel-title">Kokyuu (呼吸)</span>
-                  <span class="jewel-track">"Glide"</span>
+                  <span class="jewel-title">アラベスク</span>
                 </button>
-                <button type="button" class="jewel-case" data-track-index="1" role="radio" aria-checked="false">
+                <button type="button" class="jewel-case" tabindex="-1" data-track-index="1" role="radio" aria-checked="false">
                   <span class="jewel-spine">[CD 02]</span>
-                  <span class="jewel-title">Kyoumei Single</span>
-                  <span class="jewel-track">"Resonance"</span>
+                  <span class="jewel-title">愛の実験</span>
                 </button>
-                <button type="button" class="jewel-case" data-track-index="2" role="radio" aria-checked="false">
+                <button type="button" class="jewel-case" tabindex="-1" data-track-index="2" role="radio" aria-checked="false">
                   <span class="jewel-spine">[CD 03]</span>
-                  <span class="jewel-title">Kaifuku Suru Kizu</span>
-                  <span class="jewel-track">"Restoration"</span>
+                  <span class="jewel-title">エロティック</span>
                 </button>
-                <button type="button" class="jewel-case" data-track-index="3" role="radio" aria-checked="false">
+                <button type="button" class="jewel-case" tabindex="-1" data-track-index="3" role="radio" aria-checked="false">
                   <span class="jewel-spine">[CD 04]</span>
-                  <span class="jewel-title">Tsubasa wo Kudasai</span>
-                  <span class="jewel-track">"Prayer"</span>
+                  <span class="jewel-title">飛行船</span>
                 </button>
-                <button type="button" class="jewel-case" data-track-index="4" role="radio" aria-checked="false">
+                <button type="button" class="jewel-case" tabindex="-1" data-track-index="4" role="radio" aria-checked="false">
                   <span class="jewel-spine">[CD 05]</span>
-                  <span class="jewel-title">Houwa (飽和)</span>
-                  <span class="jewel-track">"Saturation"</span>
+                  <span class="jewel-title">回復する傷</span>
+                </button>
+                <button type="button" class="jewel-case" tabindex="-1" data-track-index="5" role="radio" aria-checked="false">
+                  <span class="jewel-spine">[CD 06]</span>
+                  <span class="jewel-title">飽和</span>
+                </button>
+                <button type="button" class="jewel-case" tabindex="-1" data-track-index="6" role="radio" aria-checked="false">
+                  <span class="jewel-spine">[CD 07]</span>
+                  <span class="jewel-title">飛べない翼</span>
+                </button>
+                <button type="button" class="jewel-case" tabindex="-1" data-track-index="7" role="radio" aria-checked="false">
+                  <span class="jewel-spine">[CD 08]</span>
+                  <span class="jewel-title">共鳴（空虚な石）</span>
+                </button>
+                <button type="button" class="jewel-case" tabindex="-1" data-track-index="8" role="radio" aria-checked="false">
+                  <span class="jewel-spine">[CD 09]</span>
+                  <span class="jewel-title">グライド</span>
                 </button>
               </div>
             </div>
           </div>
-          </div>
-
-          <!-- Component 3: FAQ / Lore Accordion -->
-          <div class="accordion-container" aria-label="The Ether Knowledgebase Accordion">
-            <h3 class="accordion-section-title">The Ether Knowledgebase &amp; FAQ</h3>
-            
-            <div class="accordion" id="ether-faq">
-              <!-- Item 1 -->
-              <div class="accordion-item">
-                <h4 class="accordion-header">
-                  <button 
-                    type="button" 
-                    class="accordion-trigger" 
-                    id="faq-btn-1" 
-                    aria-expanded="false" 
-                    aria-controls="faq-panel-1">
-                    <span>What inspired this portfolio's theme and visual direction?</span>
-                    <span class="accordion-chevron" aria-hidden="true">&plus;</span>
-                  </button>
-                </h4>
-                <div 
-                  class="accordion-panel" 
-                  id="faq-panel-1" 
-                  role="region" 
-                  aria-labelledby="faq-btn-1" 
-                  hidden>
-                  <p>
-                    This portfolio is an homage to Shunji Iwai’s masterpiece <em>All About Lily Chou-Chou</em>. The website captures its core visual motifs: glowing sunlight piercing through summer green rice fields, the tactile romance of carrying a Discman, and the quiet dignity of seeking emotional connection across online communities.
-                  </p>
-                </div>
-              </div>
-
-              <!-- Item 2 -->
-              <div class="accordion-item">
-                <h4 class="accordion-header">
-                  <button 
-                    type="button" 
-                    class="accordion-trigger" 
-                    id="faq-btn-2" 
-                    aria-expanded="false" 
-                    aria-controls="faq-panel-2">
-                    <span>How does Philia approach digital development and sound design?</span>
-                    <span class="accordion-chevron" aria-hidden="true">&plus;</span>
-                  </button>
-                </h4>
-                <div 
-                  class="accordion-panel" 
-                  id="faq-panel-2" 
-                  role="region" 
-                  aria-labelledby="faq-btn-2" 
-                  hidden>
-                  <p>
-                    I prioritize pure semantic craftsmanship: zero bloated third-party dependencies, fluid responsiveness across all screens, full keyboard accessibility, and subtle atmospheric motion. Sound is treated as an equal partner to visual layout.
-                  </p>
-                </div>
-              </div>
-
-              <!-- Item 3 -->
-              <div class="accordion-item">
-                <h4 class="accordion-header">
-                  <button 
-                    type="button" 
-                    class="accordion-trigger" 
-                    id="faq-btn-3" 
-                    aria-expanded="false" 
-                    aria-controls="faq-panel-3">
-                    <span>What is the significance of the &ldquo;Ether&rdquo;?</span>
-                    <span class="accordion-chevron" aria-hidden="true">&plus;</span>
-                  </button>
-                </h4>
-                <div 
-                  class="accordion-panel" 
-                  id="faq-panel-3" 
-                  role="region" 
-                  aria-labelledby="faq-btn-3" 
-                  hidden>
-                  <p>
-                    In the film’s mythology, the Ether is the metaphysical medium through which true emotion travels. It can be radiant and restorative (the blue ether) or crushing and suffocating (the red ether). This website was built to channel the restorative blue ether into modern web architecture.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
+</div>
+    </div></section>
+    <section class="bbs-section section-space" id="bbs" aria-labelledby="bbs-title">
+      <div class="marquee" aria-hidden="true"><div class="marquee-track"><span>the ether is somewhere between us · エーテル · </span><span>the ether is somewhere between us · エーテル · </span></div></div>
+      <div class="container bbs-layout"><div><p class="eyebrow">For the ones who understand</p><h2 id="bbs-title">Is anyone<br>else listening?</h2><p>The film’s message board turns strangers into familiar names. These imagined entries are a small tribute to that feeling.</p><p class="bbs-disclosure">Fan-written fragments. No live users or messages.</p></div><div class="bbs-window"><div class="bbs-window-top"><span>lilyholic / imagined conversations</span><span class="bbs-window-dots" aria-hidden="true">···</span></div><div class="bbs-message" aria-live="polite" aria-atomic="true"><p class="bbs-author" id="bbs-author">fieldnotes</p><blockquote id="bbs-quote">I took the long way home today. For a few minutes, the sky was the same green as the song.</blockquote><p class="bbs-signoff" id="bbs-signoff">Somewhere after school.</p></div><div class="bbs-controls"><span id="bbs-position">1 / 4</span><div><button id="bbs-prev" class="arrow-button" type="button" aria-label="Previous fan-written fragment">←</button><button id="bbs-next" class="arrow-button" type="button" aria-label="Next fan-written fragment">→</button></div></div></div></div>
     </section>
-
-    <!-- ======================================================= -->
-    <!-- 5. CONTACT / CTA SECTION                                -->
-    <!-- (With background5.png Radio Tower Backdrop)             -->
-    <!-- ======================================================= -->
-    <section class="contact-section" id="contact" aria-labelledby="contact-heading">
-      <!-- Vertical Japanese Calligraphy Watermark -->
-      <div class="vertical-kanji-watermark contact-kanji-watermark" aria-hidden="true">通信送信・共鳴</div>
-
-      <div class="container">
-        <div class="section-header text-center">
-          <h2 id="contact-heading" class="section-title">Dispatch Transmission <span class="title-sub-kanji" aria-hidden="true">／ 共鳴と対話</span></h2>
-          <p class="section-lead">
-            Whether for creative web collaborations, spatial sound inquiries, or shared thoughts across the frequency of the Ether.
-          </p>
-        </div>
-
-        <div class="contact-layout-grid">
-          <!-- Contact Channels Info Column -->
-          <div class="contact-cards-column">
-            <article class="contact-card">
-              <div class="contact-card-icon" aria-hidden="true">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                  <polyline points="22,6 12,13 2,6"></polyline>
-                </svg>
-              </div>
-              <div class="contact-card-info">
-                <h3 class="contact-card-title">Electronic Mail / SMTP</h3>
-                <p class="contact-card-desc">For commissions and collaboration inquiries:</p>
-                <a href="mailto:philia@the-ether.sanctuary" class="contact-card-link">philia@the-ether.sanctuary</a>
-              </div>
-            </article>
-
-            <article class="contact-card">
-              <div class="contact-card-icon" aria-hidden="true">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-                </svg>
-              </div>
-              <div class="contact-card-info">
-                <h3 class="contact-card-title">BBS Solitude Channel</h3>
-                <p class="contact-card-desc">Digital forum frequency handle:</p>
-                <span class="contact-card-link">lilyholic.net // alias: philia</span>
-              </div>
-            </article>
-
-            <article class="contact-card">
-              <div class="contact-card-icon" aria-hidden="true">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <line x1="2" y1="12" x2="22" y2="12"></line>
-                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                </svg>
-              </div>
-              <div class="contact-card-info">
-                <h3 class="contact-card-title">Location &amp; Transmission Range</h3>
-                <p class="contact-card-desc">Tokyo &bull; Global Ether Network</p>
-                <span class="contact-card-text">Accepting select web architecture &amp; audio projects</span>
-              </div>
-            </article>
-          </div>
-
-          <!-- Working Accessible Contact Form -->
-          <div class="contact-form-container">
-            <form class="contact-form" id="contact-form" novalidate>
-              <div class="form-header-line">
-                <span class="form-packet-tag">PACKET UPLINK // PROTOCOL 2001</span>
-                <span class="form-status-tag">STATUS: ONLINE</span>
-              </div>
-              <h3 class="form-title">Send a Transmission</h3>
-
-              <!-- Name Field -->
-              <div class="form-group">
-                <label for="contact-name" class="form-label">
-                  Your Handle / Sender Name <span class="required-indicator" aria-hidden="true">*</span>
-                </label>
-                <input 
-                  type="text" 
-                  id="contact-name" 
-                  name="name" 
-                  class="form-input" 
-                  placeholder="e.g. Yuichi / Blue Cat" 
-                  required 
-                  aria-required="true" 
-                  autocomplete="name">
-                <span class="form-error-msg" id="name-error" aria-live="assertive"></span>
-              </div>
-
-              <!-- Email Field -->
-              <div class="form-group">
-                <label for="contact-email" class="form-label">
-                  Return Network Address (Email) <span class="required-indicator" aria-hidden="true">*</span>
-                </label>
-                <input 
-                  type="email" 
-                  id="contact-email" 
-                  name="email" 
-                  class="form-input" 
-                  placeholder="you@sanctuary.org" 
-                  required 
-                  aria-required="true" 
-                  autocomplete="email">
-                <span class="form-error-msg" id="email-error" aria-live="assertive"></span>
-              </div>
-
-              <!-- Subject / Topic Field -->
-              <div class="form-group">
-                <label for="contact-topic" class="form-label">
-                  Transmission Frequency <span class="required-indicator" aria-hidden="true">*</span>
-                </label>
-                <select id="contact-topic" name="topic" class="form-select" required aria-required="true">
-                  <option value="" disabled selected>Select an inquiry frequency...</option>
-                  <option value="project">Creative Web Architecture</option>
-                  <option value="audio">Ambient Sound Design &amp; Web Audio</option>
-                  <option value="collab">Cinematography / Visual Collaboration</option>
-                  <option value="general">Ether Resonance / Solitude Note</option>
-                </select>
-                <span class="form-error-msg" id="topic-error" aria-live="assertive"></span>
-              </div>
-
-              <!-- Message Field -->
-              <div class="form-group">
-                <label for="contact-message" class="form-label">
-                  Transmission Payload (Message) <span class="required-indicator" aria-hidden="true">*</span>
-                </label>
-                <textarea 
-                  id="contact-message" 
-                  name="message" 
-                  class="form-textarea" 
-                  rows="4" 
-                  placeholder="Share details regarding your vision, inquiry, or transmission..." 
-                  required 
-                  aria-required="true"></textarea>
-                <span class="form-error-msg" id="message-error" aria-live="assertive"></span>
-              </div>
-
-              <!-- Consent Checkbox -->
-              <div class="form-checkbox-group">
-                <input 
-                  type="checkbox" 
-                  id="contact-consent" 
-                  name="consent" 
-                  class="form-checkbox" 
-                  required 
-                  aria-required="true">
-                <label for="contact-consent" class="checkbox-label">
-                  I agree to transmit this message under the sanctuary principles of mutual respect.
-                </label>
-              </div>
-              <span class="form-error-msg" id="consent-error" aria-live="assertive"></span>
-
-              <!-- Submit Button -->
-              <button type="submit" class="btn btn-primary btn-block" id="form-submit-btn">
-                <span>Dispatch Transmission [送信]</span>
-                <span class="btn-glyph" aria-hidden="true">&rarr;</span>
-              </button>
-
-              <!-- Dynamic Accessible Status Alert -->
-              <div class="form-status-alert" id="form-status" role="status" aria-live="polite"></div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
+    <section class="return-section" aria-labelledby="return-title"><img src="./assets/background3.png" alt="" width="1436" height="807" loading="lazy"><div class="return-content"><p lang="ja">また、ここで。</p><h2 id="return-title">There is still<br>some Ether here.</h2><a class="button button-light" href="#home">Return to the fields <span aria-hidden="true">↑</span></a></div></section>
   </main>
-
-  <!-- ========================================================= -->
-  <!-- 6. FOOTER LANDMARK                                        -->
-  <!-- ========================================================= -->
-  <footer class="site-footer" id="footer" role="contentinfo" aria-label="Site Footer">
-    <div class="container footer-container">
-      <div class="footer-top-grid">
-        
-        <!-- Brand / Identity Column -->
-        <div class="footer-brand-col">
-          <a href="#hero" class="footer-brand-link" aria-label="The Ether Home">
-            <img src="./assets/lily-logo.jpg" alt="All About Lily Chou-Chou logo artwork in footer" class="footer-logo" width="28" height="42" loading="lazy">
-            <span class="footer-brand-name">The Ether &bull; Philia</span>
-          </a>
-          <p class="footer-brand-tagline">
-            Personal creative portfolio dedicated to capturing the cinematography, aural serenity, and profound emotional resonance of the Lily Chou-Chou universe.
-          </p>
-        </div>
-
-        <!-- Quick Navigation Links -->
-        <div class="footer-nav-col">
-          <h3 class="footer-heading">Navigation</h3>
-          <ul class="footer-link-list" role="list">
-            <li><a href="#hero" class="footer-link">Home</a></li>
-            <li><a href="#about" class="footer-link">About Philia</a></li>
-            <li><a href="#skills" class="footer-link">Skills &amp; Ethos</a></li>
-            <li><a href="#projects" class="footer-link">Featured Works</a></li>
-            <li><a href="#interactive" class="footer-link">Ether Terminal</a></li>
-            <li><a href="#contact" class="footer-link">Contact</a></li>
-          </ul>
-        </div>
-
-        <!-- Archival & Reference Links -->
-        <div class="footer-nav-col">
-          <h3 class="footer-heading">Archival Canon</h3>
-          <ul class="footer-link-list" role="list">
-            <li><a href="#interactive" class="footer-link">Kokyuu (Breathe) Case</a></li>
-            <li><a href="#interactive" class="footer-link">Glide Acoustic Study</a></li>
-            <li><a href="#interactive" class="footer-link">Debussy Arabesque No. 1</a></li>
-            <li><a href="#about" class="footer-link">Noboru Shinoda Light</a></li>
-          </ul>
-        </div>
-
-        <!-- Social Media & Channels -->
-        <div class="footer-social-col">
-          <h3 class="footer-heading">Ether Channels</h3>
-          <p class="footer-social-text">Follow sound updates, code releases, and photography:</p>
-          <div class="social-icon-links" aria-label="Social media channels">
-            <a href="https://youtube.com" class="social-btn" aria-label="YouTube Channel" target="_blank" rel="noopener noreferrer">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-              </svg>
-            </a>
-            <a href="https://spotify.com" class="social-btn" aria-label="Spotify Profile" target="_blank" rel="noopener noreferrer">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.496 17.306c-.218.358-.68.47-1.038.252-2.846-1.74-6.429-2.134-10.65-1.168-.41.093-.815-.164-.908-.574-.094-.41.163-.815.574-.908 4.625-1.056 8.583-.612 11.77 1.34.358.218.47.68.252 1.058zm1.467-3.26c-.276.448-.86.59-1.308.314-3.259-2.003-8.228-2.583-12.083-1.413-.503.152-1.03-.136-1.182-.64-.153-.503.136-1.03.64-1.182 4.41-1.338 9.905-.694 13.62 1.593.447.276.59.86.313 1.328zm.126-3.41c-3.908-2.32-10.347-2.533-14.077-1.401-.599.183-1.235-.159-1.418-.758-.183-.599.159-1.235.758-1.418 4.29-1.303 11.393-1.05 15.86 1.603.538.32.715 1.02.395 1.558-.32.538-1.02.715-1.518.416z"/>
-              </svg>
-            </a>
-            <a href="https://bandcamp.com" class="social-btn" aria-label="Bandcamp Channel" target="_blank" rel="noopener noreferrer">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M0 18.75l7.437-13.5h16.563l-7.438 13.5z"/>
-              </svg>
-            </a>
-            <a href="https://github.com" class="social-btn" aria-label="Project Repository on GitHub" target="_blank" rel="noopener noreferrer">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
-              </svg>
-            </a>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Footer Bottom Copyright & Back-to-Top -->
-      <div class="footer-bottom-bar">
-        <p class="copyright-notice">
-          &copy; <span id="current-year">2026</span> Philia &bull; The Ether. Handcrafted with semantic HTML5, modern CSS3, and vanilla ES6+.
-        </p>
-        <div class="footer-actions">
-          <a href="#hero" class="back-to-top-btn" aria-label="Back to top of page">
-            <span>Back to Top</span>
-            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="18 15 12 9 6 15"></polyline>
-            </svg>
-          </a>
-        </div>
-      </div>
+  <footer class="site-footer container"><div class="footer-top"><a class="footer-brand" href="#home">the ether<span lang="ja">エーテル</span></a><p>A small place for a film that stays with you.<br>An independent, unofficial fan tribute.</p><button class="motion-toggle" id="motion-toggle" type="button" aria-pressed="false">Pause motion</button></div>
+    <div class="footer-disclaimer" id="legal-disclaimer">
+      <h3 class="disclaimer-title">Disclaimer &amp; Copyright Notice</h3>
+      <p>All music, compositions, and sound recordings from the album <em>呼吸 (Kokyuu)</em>, as well as film imagery, characters, trademarks, and titles from <em>All About Lily Chou-Chou</em> (リリイ・シュシュのすべて), belong entirely to their respective original copyright holders: Takeshi Kobayashi, Salyu, OORONG-SHA, Avex Inc., Rockwell Eyes, and Shunji Iwai.</p>
+      <p>The author of this website does not own, nor claim any ownership over, any of the music, audio recordings, images, or intellectual properties featured on this site. This website is a strictly non-commercial, personal fan tribute created exclusively for artistic appreciation and community reflection. No copyright infringement is intended.</p>
     </div>
-  </footer>
-
-  <!-- ========================================================= -->
-  <!-- ACCESSIBLE MODAL DIALOG                                   -->
-  <!-- ========================================================= -->
-  <div 
-    class="modal-backdrop" 
-    id="track-modal" 
-    role="dialog" 
-    aria-modal="true" 
-    aria-labelledby="modal-title" 
-    aria-hidden="true">
-    <div class="modal-dialog">
-      <header class="modal-header">
-        <h3 id="modal-title" class="modal-title">Archival Liner Notes</h3>
-        <button type="button" class="modal-close-btn" id="modal-close-btn" aria-label="Close modal dialog">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </button>
-      </header>
-      <div class="modal-content" id="modal-body-content">
-        <!-- Injected dynamically via script.js -->
-        <p>Select a piece to view project specifications, cinematographic notes, and auditory philosophy.</p>
-      </div>
-      <footer class="modal-footer">
-        <button type="button" class="btn btn-outline" id="modal-footer-close">Close Notes</button>
-      </footer>
-    </div>
-  </div>
+    <div class="footer-bottom"><p>Film: Shunji Iwai · Images: Noboru Shinoda · Music: Takeshi Kobayashi / Salyu</p><a href="https://www.imdb.com/title/tt0297721/" target="_blank" rel="noopener noreferrer">Film credits <span aria-hidden="true">↗</span><span class="sr-only"> on IMDb, opens a new tab</span></a></div><p class="credit-note">Film imagery and titles belong to their respective owners. This site is a fan interpretation and is not an official archive.</p></footer>
+  <dialog class="still-dialog" id="still-dialog" aria-labelledby="dialog-title"><div class="dialog-top"><h2 id="dialog-title">Summer fields</h2><button class="arrow-button" id="dialog-close" type="button" aria-label="Close still viewer">×</button></div><img id="dialog-image" src="./assets/background.jpg" alt="Yuichi standing among brilliant green rice plants"><div class="dialog-bottom"><p id="dialog-caption">The whole world turns green.</p><div class="dialog-actions"><button class="arrow-button" id="dialog-prev" type="button" aria-label="Previous still">←</button><span id="dialog-position" aria-live="polite">1 / 5</span><button class="arrow-button" id="dialog-next" type="button" aria-label="Next still">→</button><button class="button button-dark" id="set-horizon" type="button">Use as opening scene</button></div></div></dialog>
+  <p class="toast" id="site-status" role="status"></p>
 </body>
 </html>
