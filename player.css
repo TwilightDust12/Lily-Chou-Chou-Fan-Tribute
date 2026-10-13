@@ -197,9 +197,16 @@
 .viewport-panel {
   width: 100%;
   display: none;
+  transition: opacity 160ms var(--ease-out), filter 160ms var(--ease-out), transform 160ms var(--ease-out);
+  will-change: opacity, filter, transform;
 }
 .viewport-panel.active {
   display: block;
+}
+.viewport-panel.panel-fading {
+  opacity: 0;
+  filter: blur(2px);
+  transform: scale(0.98);
 }
 
 /* --------------------------------------------------------------------------

@@ -21,7 +21,17 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('meta[name="theme-color"]').content = isDark ? '#15211a' : '#f1f0e8';
   };
   applyTheme(savedTheme === 'dark' ? 'dark' : 'light');
+
+  // Smooth theme transition animation
+  let themeTransitionTimer;
   document.getElementById('theme-toggle').addEventListener('click', () => {
+    if (!root.classList.contains('motion-paused') && !reducedMotion.matches) {
+      root.classList.add('theme-transitioning');
+      clearTimeout(themeTransitionTimer);
+      themeTransitionTimer = setTimeout(() => {
+        root.classList.remove('theme-transitioning');
+      }, 360);
+    }
     const theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
     applyTheme(theme);
     save('ether-theme', theme);
@@ -62,6 +72,50 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   window.matchMedia('(max-width: 760px)').addEventListener('change', () => setMenu(false));
 
+  // Emil Kowalski spring-momentum tilt on floating hero fragment
+  const heroFragment = document.querySelector('.hero-fragment');
+  const heroSection = document.getElementById('home');
+  let targetTiltX = 0;
+  let targetTiltY = 0;
+  let currentTiltX = 0;
+  let currentTiltY = 0;
+  let heroTiltRaf = null;
+
+  const updateHeroTilt = () => {
+    heroTiltRaf = null;
+    if (root.classList.contains('motion-paused') || window.matchMedia('(pointer: coarse)').matches || !heroFragment) return;
+
+    // Linear interpolation with damping (simulates gentle spring settle)
+    currentTiltX += (targetTiltX - currentTiltX) * 0.09;
+    currentTiltY += (targetTiltY - currentTiltY) * 0.09;
+
+    const baseRot = -3;
+    const dynamicRot = baseRot + currentTiltY * 2.2;
+    heroFragment.style.transform = `rotate(${dynamicRot.toFixed(2)}deg) translate3d(${(currentTiltX * 7).toFixed(1)}px, ${(currentTiltY * 6).toFixed(1)}px, 0)`;
+
+    if (Math.abs(targetTiltX - currentTiltX) > 0.005 || Math.abs(targetTiltY - currentTiltY) > 0.005) {
+      heroTiltRaf = requestAnimationFrame(updateHeroTilt);
+    }
+  };
+
+  if (heroSection) {
+    heroSection.addEventListener('pointermove', event => {
+      if (root.classList.contains('motion-paused') || window.matchMedia('(pointer: coarse)').matches) return;
+      const rect = heroSection.getBoundingClientRect();
+      const normX = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+      const normY = ((event.clientY - rect.top) / rect.height) * 2 - 1;
+      targetTiltX = Math.max(-1, Math.min(1, normX));
+      targetTiltY = Math.max(-1, Math.min(1, normY));
+      if (!heroTiltRaf) heroTiltRaf = requestAnimationFrame(updateHeroTilt);
+    }, { passive: true });
+
+    heroSection.addEventListener('pointerleave', () => {
+      targetTiltX = 0;
+      targetTiltY = 0;
+      if (!heroTiltRaf) heroTiltRaf = requestAnimationFrame(updateHeroTilt);
+    });
+  }
+
   const panels = [...document.querySelectorAll('.scene-panel')];
   const scenes = panels.map(panel => ({
     src: panel.querySelector('img').getAttribute('src'),
@@ -90,20 +144,37 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const dialog = document.getElementById('still-dialog');
+  const dialogImage = document.getElementById('dialog-image');
   let currentScene = 0;
-  const showScene = index => {
+  let isDialogFading = false;
+
+  const showScene = (index, animated = true) => {
     currentScene = (index + scenes.length) % scenes.length;
     const scene = scenes[currentScene];
     document.getElementById('dialog-title').textContent = scene.title;
     document.getElementById('dialog-caption').textContent = scene.caption;
-    const image = document.getElementById('dialog-image');
-    image.src = scene.src;
-    image.alt = scene.alt;
     document.getElementById('dialog-position').textContent = `${currentScene + 1} / ${scenes.length}`;
+
+    if (!animated || root.classList.contains('motion-paused') || !dialog.open) {
+      dialogImage.src = scene.src;
+      dialogImage.alt = scene.alt;
+      return;
+    }
+
+    if (isDialogFading) return;
+    isDialogFading = true;
+    dialogImage.classList.add('is-fading');
+    setTimeout(() => {
+      dialogImage.src = scene.src;
+      dialogImage.alt = scene.alt;
+      dialogImage.classList.remove('is-fading');
+      isDialogFading = false;
+    }, 130);
   };
+
   document.querySelectorAll('[data-open-scene]').forEach(button => {
     button.addEventListener('click', () => {
-      showScene(Number(button.dataset.openScene));
+      showScene(Number(button.dataset.openScene), false);
       dialog.showModal();
     });
   });
@@ -120,6 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
       showScene(currentScene + (event.key === 'ArrowRight' ? 1 : -1));
     }
   });
+
   const setHorizon = scene => {
     const image = document.getElementById('hero-landscape');
     image.src = scene.src;
@@ -129,6 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const saved = scenes.find(scene => scene.src === localStorage.getItem('ether-horizon-bg'));
     if (saved) setHorizon(saved);
   } catch { /* The default landscape remains available without storage. */ }
+
   let toastTimer;
   document.getElementById('set-horizon').addEventListener('click', () => {
     const scene = scenes[currentScene];
@@ -138,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('home').scrollIntoView({behavior: root.classList.contains('motion-paused') ? 'instant' : 'smooth'});
     document.getElementById('site-status').textContent = `Opening scene changed to ${scene.title.toLowerCase()}.`;
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => { document.getElementById('site-status').textContent = ''; }, 4500);
+    toastTimer = setTimeout(() => { document.getElementById('site-status').textContent = ''; }, 4200);
   });
 
   const fragments = [
@@ -148,14 +221,35 @@ document.addEventListener('DOMContentLoaded', () => {
     ['distantlight', 'Maybe we are all looking at different skies and hearing the same thing.', 'Before the last train.']
   ];
   let fragmentIndex = 0;
+  const bbsMessage = document.querySelector('.bbs-message');
+  let isBrowsingBBS = false;
+
   const browseFragment = offset => {
+    if (isBrowsingBBS) return;
     fragmentIndex = (fragmentIndex + offset + fragments.length) % fragments.length;
     const [author, quote, signoff] = fragments[fragmentIndex];
-    document.getElementById('bbs-author').textContent = author;
-    document.getElementById('bbs-quote').textContent = quote;
-    document.getElementById('bbs-signoff').textContent = signoff;
-    document.getElementById('bbs-position').textContent = `${fragmentIndex + 1} / ${fragments.length}`;
+
+    if (root.classList.contains('motion-paused') || !bbsMessage) {
+      document.getElementById('bbs-author').textContent = author;
+      document.getElementById('bbs-quote').textContent = quote;
+      document.getElementById('bbs-signoff').textContent = signoff;
+      document.getElementById('bbs-position').textContent = `${fragmentIndex + 1} / ${fragments.length}`;
+      return;
+    }
+
+    // Emil Kowalski blur-masking technique for fluid text state transition
+    isBrowsingBBS = true;
+    bbsMessage.classList.add('is-changing');
+    setTimeout(() => {
+      document.getElementById('bbs-author').textContent = author;
+      document.getElementById('bbs-quote').textContent = quote;
+      document.getElementById('bbs-signoff').textContent = signoff;
+      document.getElementById('bbs-position').textContent = `${fragmentIndex + 1} / ${fragments.length}`;
+      bbsMessage.classList.remove('is-changing');
+      isBrowsingBBS = false;
+    }, 140);
   };
+
   document.getElementById('bbs-prev').addEventListener('click', () => browseFragment(-1));
   document.getElementById('bbs-next').addEventListener('click', () => browseFragment(1));
 
