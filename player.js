@@ -51,61 +51,61 @@ document.addEventListener('DOMContentLoaded', () => {
   ];
   let currentPhosphorIndex = 0;
 
-  // Official 9-track album: 呼吸 (Kokyuu) by Lily Chou-Chou
+  // Official 9-track album: 呼吸 (Kokyuu) by Lily Chou-Chou (Lightweight MP3)
   const playlist = [
     {
       title: 'アラベスク',
       sub: 'Arabesque · Track 01',
       duration: 350,
-      src: './assets/Lily%20Chou-Chou/%E5%91%BC%E5%90%B8%20%282008%29/01%20-%20%E3%82%A2%E3%83%A9%E3%83%99%E3%82%B9%E3%82%AF.flac'
+      src: './assets/Lily%20Chou-Chou/%E5%91%BC%E5%90%B8%20%282008%29/01%20-%20%E3%82%A2%E3%83%A9%E3%83%99%E3%82%B9%E3%82%AF.mp3'
     },
     {
       title: '愛の実験',
       sub: 'Ai no Jikken · Track 02',
       duration: 327,
-      src: './assets/Lily%20Chou-Chou/%E5%91%BC%E5%90%B8%20%282008%29/02%20-%20%E6%84%9B%E3%81%AE%E5%AE%9F%E9%A8%93.flac'
+      src: './assets/Lily%20Chou-Chou/%E5%91%BC%E5%90%B8%20%282008%29/02%20-%20%E6%84%9B%E3%81%AE%E5%AE%9F%E9%A8%93.mp3'
     },
     {
       title: 'エロティック',
       sub: 'Erotic · Track 03',
       duration: 288,
-      src: './assets/Lily%20Chou-Chou/%E5%91%BC%E5%90%B8%20%282008%29/03%20-%20%E3%82%A8%E3%83%AD%E3%83%86%E3%82%A3%E3%83%83%E3%82%AF.flac'
+      src: './assets/Lily%20Chou-Chou/%E5%91%BC%E5%90%B8%20%282008%29/03%20-%20%E3%82%A8%E3%83%AD%E3%83%86%E3%82%A3%E3%83%83%E3%82%AF.mp3'
     },
     {
       title: '飛行船',
       sub: 'Hikousen · Track 04',
       duration: 187,
-      src: './assets/Lily%20Chou-Chou/%E5%91%BC%E5%90%B8%20%282008%29/04%20-%20%E9%A3%9B%E8%A1%8C%E8%88%B9.flac'
+      src: './assets/Lily%20Chou-Chou/%E5%91%BC%E5%90%B8%20%282008%29/04%20-%20%E9%A3%9B%E8%A1%8C%E8%88%B9.mp3'
     },
     {
       title: '回復する傷',
       sub: 'Kaifuku Suru Kizu · Track 05',
       duration: 183,
-      src: './assets/Lily%20Chou-Chou/%E5%91%BC%E5%90%B8%20%282008%29/05%20-%20%E5%9B%9E%E5%BE%A9%E3%81%99%E3%82%8B%E5%82%B7.flac'
+      src: './assets/Lily%20Chou-Chou/%E5%91%BC%E5%90%B8%20%282008%29/05%20-%20%E5%9B%9E%E5%BE%A9%E3%81%99%E3%82%8B%E5%82%B7.mp3'
     },
     {
       title: '飽和',
       sub: 'Houwa · Track 06',
       duration: 233,
-      src: './assets/Lily%20Chou-Chou/%E5%91%BC%E5%90%B8%20%282008%29/06%20-%20%E9%A3%BD%E5%92%8C.flac'
+      src: './assets/Lily%20Chou-Chou/%E5%91%BC%E5%90%B8%20%282008%29/06%20-%20%E9%A3%BD%E5%92%8C.mp3'
     },
     {
       title: '飛べない翼',
       sub: 'Tobenai Tsubasa · Track 07',
       duration: 288,
-      src: './assets/Lily%20Chou-Chou/%E5%91%BC%E5%90%B8%20%282008%29/07%20-%20%E9%A3%9B%E3%81%B9%E3%81%AA%E3%81%84%E7%BF%BC.flac'
+      src: './assets/Lily%20Chou-Chou/%E5%91%BC%E5%90%B8%20%282008%29/07%20-%20%E9%A3%9B%E3%81%B9%E3%81%AA%E3%81%84%E7%BF%BC.mp3'
     },
     {
       title: '共鳴（空虚な石）',
       sub: 'Kyoumei (Kuukyo na Ishi) · Track 08',
       duration: 263,
-      src: './assets/Lily%20Chou-Chou/%E5%91%BC%E5%90%B8%20%282008%29/08%20-%20%E5%85%B1%E9%B3%B4%EF%BC%88%E7%A9%BA%E8%99%9A%E3%81%AA%E7%9F%B3%EF%BC%89.flac'
+      src: './assets/Lily%20Chou-Chou/%E5%91%BC%E5%90%B8%20%282008%29/08%20-%20%E5%85%B1%E9%B3%B4%EF%BC%88%E7%A9%BA%E8%99%9A%E3%81%AA%E7%9F%B3%EF%BC%89.mp3'
     },
     {
       title: 'グライド',
       sub: 'Glide · Track 09',
       duration: 220,
-      src: './assets/Lily%20Chou-Chou/%E5%91%BC%E5%90%B8%20%282008%29/09%20-%20%E3%82%B0%E3%83%A9%E3%82%A4%E3%83%89.flac'
+      src: './assets/Lily%20Chou-Chou/%E5%91%BC%E5%90%B8%20%282008%29/09%20-%20%E3%82%B0%E3%83%A9%E3%82%A4%E3%83%89.mp3'
     }
   ];
 
@@ -113,6 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let isPlaying = false;
   let isLidOpen = false;
   let currentSeconds = 0;
+  let autoplayArmed = true;
 
   // HTML5 Audio Engine & Web Audio API Routing
   const audioElement = new Audio();
@@ -442,9 +443,63 @@ document.addEventListener('DOMContentLoaded', () => {
     if (playerStatusText) playerStatusText.textContent = 'AUDIO ERROR: CHECK FILE';
   });
 
+  const cancelAutoplayArm = () => {
+    autoplayArmed = false;
+    window.removeEventListener('pointerdown', handleFirstInteraction);
+    window.removeEventListener('keydown', handleFirstInteraction);
+    window.removeEventListener('touchstart', handleFirstInteraction);
+  };
+
+  const startPlaybackWithFade = () => {
+    if (isLidOpen || isPlaying) return;
+    initAudioEngine();
+    isPlaying = true;
+    startVisualizerLoop();
+    if (playerConsole) playerConsole.classList.add('playing');
+    if (iconPlay && iconPause) {
+      iconPlay.style.display = 'none';
+      iconPause.style.display = 'inline-block';
+    }
+    if (ctrlPlayLabel) ctrlPlayLabel.textContent = 'PAUSE';
+    if (ctrlPlay) ctrlPlay.setAttribute('aria-label', 'Pause current track');
+    if (playerStatusText) playerStatusText.textContent = `PLAYING: ${playlist[currentTrackIndex].title}`;
+    if (physicalCompactDisc) physicalCompactDisc.classList.add('spinning');
+    if (discSpinIndicator) {
+      discSpinIndicator.textContent = '( ( ◎ ) )';
+      discSpinIndicator.style.color = 'var(--accent-primary)';
+    }
+    playMechanicalSound('spinup');
+
+    const targetVol = discmanVolume ? (parseInt(discmanVolume.value, 10) / 100) : 0.75;
+    audioElement.volume = 0;
+    if (synthMasterGain && audioCtx) {
+      synthMasterGain.gain.setValueAtTime(0.001, audioCtx.currentTime);
+      synthMasterGain.gain.linearRampToValueAtTime(targetVol, audioCtx.currentTime + 0.4);
+    }
+    audioElement.play().then(() => {
+      let fadeElapsed = 0;
+      const fadeStep = 50;
+      const fadeInterval = setInterval(() => {
+        fadeElapsed += fadeStep;
+        const progress = Math.min(1, fadeElapsed / 400);
+        audioElement.volume = progress * targetVol;
+        if (progress >= 1) clearInterval(fadeInterval);
+      }, fadeStep);
+    }).catch(err => {
+      console.warn('Play failed:', err);
+    });
+  };
+
+  const handleFirstInteraction = (e) => {
+    if (!autoplayArmed || isPlaying || isLidOpen) return;
+    if (e && e.target && e.target.closest('#ctrl-play, #ctrl-stop, #btn-disc-eject')) return;
+    cancelAutoplayArm();
+    startPlaybackWithFade();
+  };
+
   /* Discman Door Open / Eject Toggle */
   const toggleLid = () => {
-    // Pause before changing the lid state so Play cannot close it again.
+    cancelAutoplayArm();
     if (!isLidOpen && isPlaying) togglePlay();
     isLidOpen = !isLidOpen;
     playMechanicalSound(isLidOpen ? 'eject' : 'close');
@@ -488,6 +543,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* Disc Loading via Jewel Case Rack */
   const loadTrackByIndex = (index, autoPlay = true) => {
     if (index < 0 || index >= playlist.length) return;
+    cancelAutoplayArm();
     currentTrackIndex = index;
     currentSeconds = 0;
 
@@ -564,6 +620,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* Play / Pause Toggle */
   const togglePlay = () => {
+    cancelAutoplayArm();
     if (!isPlaying && !initAudioEngine()) return;
     if (isLidOpen) {
       toggleLid(); // Close lid first
@@ -616,6 +673,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (ctrlStop) {
     ctrlStop.addEventListener('click', () => {
+      cancelAutoplayArm();
       if (isPlaying) {
         togglePlay();
       }
@@ -633,6 +691,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (ctrlNext) {
     ctrlNext.addEventListener('click', () => {
+      cancelAutoplayArm();
       playMechanicalSound('seek');
       const nextIndex = (currentTrackIndex + 1) % playlist.length;
       loadTrackByIndex(nextIndex, isPlaying);
@@ -641,6 +700,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (ctrlPrev) {
     ctrlPrev.addEventListener('click', () => {
+      cancelAutoplayArm();
       playMechanicalSound('seek');
       const prevIndex = (currentTrackIndex - 1 + playlist.length) % playlist.length;
       loadTrackByIndex(prevIndex, isPlaying);
@@ -679,7 +739,7 @@ document.addEventListener('DOMContentLoaded', () => {
     cdSpindleBay.style.cursor = 'pointer';
     cdSpindleBay.setAttribute('title', 'Click to toggle play/pause or insert disc');
     cdSpindleBay.addEventListener('click', (e) => {
-      // Don't intercept if clicking the eject button itself
+      cancelAutoplayArm();
       if (e.target.closest('#btn-disc-eject')) return;
       if (isLidOpen) {
         toggleLid();
@@ -692,7 +752,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (playerVisualScreen) {
     playerVisualScreen.style.cursor = 'pointer';
     playerVisualScreen.setAttribute('title', 'Click CRT monitor to toggle play/pause');
-    playerVisualScreen.addEventListener('click', togglePlay);
+    playerVisualScreen.addEventListener('click', () => {
+      cancelAutoplayArm();
+      togglePlay();
+    });
   }
 
   if (oscilloscopeScreen) {
@@ -741,4 +804,40 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('ether:motionchange', refreshVisualizer);
 
   updatePlayerDisplay();
+
+  /* Autoplay Engine with First-Interaction Fallback */
+  const attemptAutoplay = () => {
+    initAudioEngine();
+    const playPromise = audioElement.play();
+    if (playPromise !== undefined) {
+      playPromise.then(() => {
+        // Direct unmuted autoplay succeeded
+        cancelAutoplayArm();
+        isPlaying = true;
+        startVisualizerLoop();
+        if (playerConsole) playerConsole.classList.add('playing');
+        if (iconPlay && iconPause) {
+          iconPlay.style.display = 'none';
+          iconPause.style.display = 'inline-block';
+        }
+        if (ctrlPlayLabel) ctrlPlayLabel.textContent = 'PAUSE';
+        if (ctrlPlay) ctrlPlay.setAttribute('aria-label', 'Pause current track');
+        if (playerStatusText) playerStatusText.textContent = `PLAYING: ${playlist[currentTrackIndex].title}`;
+        if (physicalCompactDisc) physicalCompactDisc.classList.add('spinning');
+        if (discSpinIndicator) {
+          discSpinIndicator.textContent = '( ( ◎ ) )';
+          discSpinIndicator.style.color = 'var(--accent-primary)';
+        }
+        playMechanicalSound('spinup');
+      }).catch(() => {
+        // Browser blocked unmuted autoplay. Arm first-interaction listener across document.
+        if (playerStatusText) playerStatusText.textContent = 'READY TO PLAY';
+        window.addEventListener('pointerdown', handleFirstInteraction, { once: true, passive: true });
+        window.addEventListener('keydown', handleFirstInteraction, { once: true, passive: true });
+        window.addEventListener('touchstart', handleFirstInteraction, { once: true, passive: true });
+      });
+    }
+  };
+
+  attemptAutoplay();
 });
