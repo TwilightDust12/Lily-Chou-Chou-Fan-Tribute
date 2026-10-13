@@ -372,7 +372,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const updatePlayerDisplay = () => {
     const track = playlist[currentTrackIndex];
-    if (currentTrackName) currentTrackName.textContent = track.title;
+    if (currentTrackName && currentTrackName.textContent !== track.title) {
+      currentTrackName.classList.add('title-fading');
+      setTimeout(() => {
+        currentTrackName.textContent = track.title;
+        currentTrackName.classList.remove('title-fading');
+      }, 90);
+    } else if (currentTrackName) {
+      currentTrackName.textContent = track.title;
+    }
     if (currentTrackAlbum) currentTrackAlbum.textContent = track.sub;
     jewelCases.forEach((item, index) => {
       const selected = index === currentTrackIndex;
@@ -598,6 +606,11 @@ document.addEventListener('DOMContentLoaded', () => {
   viewportTabs.forEach(tab => {
     tab.addEventListener('click', () => {
       const targetPanelId = tab.getAttribute('aria-controls');
+      const activePanel = document.querySelector('.viewport-panel.active');
+      const targetPanel = document.getElementById(targetPanelId);
+      if (activePanel === targetPanel) return;
+
+      playMechanicalSound('seek');
 
       viewportTabs.forEach(t => {
         const isSelected = t === tab;
@@ -606,15 +619,33 @@ document.addEventListener('DOMContentLoaded', () => {
         t.tabIndex = isSelected ? 0 : -1;
       });
 
-      viewportPanels.forEach(panel => {
-        if (panel.id === targetPanelId) {
-          panel.classList.add('active');
-          panel.hidden = false;
-        } else {
-          panel.classList.remove('active');
-          panel.hidden = true;
-        }
-      });
+      if (document.documentElement.classList.contains('motion-paused') || !activePanel) {
+        viewportPanels.forEach(panel => {
+          const isTarget = panel.id === targetPanelId;
+          panel.classList.toggle('active', isTarget);
+          panel.hidden = !isTarget;
+        });
+        return;
+      }
+
+      // Smooth Emil Kowalski blur-masking transition between tabs
+      activePanel.classList.add('panel-fading');
+      setTimeout(() => {
+        viewportPanels.forEach(panel => {
+          if (panel.id === targetPanelId) {
+            panel.classList.add('active');
+            panel.hidden = false;
+            panel.classList.add('panel-fading');
+            requestAnimationFrame(() => {
+              panel.classList.remove('panel-fading');
+            });
+          } else {
+            panel.classList.remove('active');
+            panel.classList.remove('panel-fading');
+            panel.hidden = true;
+          }
+        });
+      }, 120);
     });
   });
 
