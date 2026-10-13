@@ -54,11 +54,14 @@ assert 'Fan-written fragments' in html
 
 album_dir = ROOT / 'assets' / 'Lily Chou-Chou' / '呼吸 (2008)'
 assert album_dir.is_dir(), f'Album folder missing: {album_dir}'
-flac_files = list(album_dir.glob('*.flac'))
-assert len(flac_files) == 9, f'Expected 9 FLAC tracks, found {len(flac_files)}'
+mp3_files = list(album_dir.glob('*.mp3'))
+assert len(mp3_files) == 9, f'Expected 9 MP3 tracks, found {len(mp3_files)}'
 
 jewel_cases = re.findall(r'data-track-index="(\d+)"', html)
 assert len(jewel_cases) == 9, f'Expected 9 jewel case buttons, found {len(jewel_cases)}'
 
-print(f'PASS: {len(page.ids)} unique IDs, {len(page.targets)} linked targets, {len(page.files)} local assets, 9 album tracks, and player bindings')
+player_js = (ROOT / 'player.js').read_text()
+assert '.mp3' in player_js, 'player.js must reference MP3 tracks'
+
+print(f'PASS: {len(page.ids)} unique IDs, {len(page.targets)} linked targets, {len(page.files)} local assets, 9 MP3 tracks, and player bindings')
 
