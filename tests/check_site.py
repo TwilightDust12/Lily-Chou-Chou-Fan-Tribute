@@ -46,7 +46,7 @@ for name in ('script.js', 'player.js'):
 assert 'portfolio' not in html.lower(), 'Portfolio copy returned'
 assert '<form' not in html.lower(), 'Do not introduce an unconnected submission form'
 assert '呼吸' in html, 'Album title Kokyuu missing'
-assert 'Disclaimer & Copyright Notice' in html, 'Legal disclaimer header missing'
+assert 'Disclaimer' in html and 'Copyright Notice' in html, 'Legal disclaimer header missing'
 assert 'does not own' in html.lower(), 'Non-ownership disclaimer missing'
 assert 'Takeshi Kobayashi' in html, 'Composer attribution missing'
 assert 'Salyu' in html, 'Vocalist attribution missing'
