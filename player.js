@@ -57,55 +57,55 @@ document.addEventListener('DOMContentLoaded', () => {
       title: 'アラベスク',
       sub: 'Arabesque · Track 01',
       duration: 350,
-      src: './assets/Lily%20Chou-Chou/%E5%91%BC%E5%90%B8%20(2008)/01%20-%20%E3%82%A2%E3%83%A9%E3%83%99%E3%82%B9%E3%82%AF.flac'
+      src: './assets/Lily%20Chou-Chou/%E5%91%BC%E5%90%B8%20%282008%29/01%20-%20%E3%82%A2%E3%83%A9%E3%83%99%E3%82%B9%E3%82%AF.flac'
     },
     {
       title: '愛の実験',
       sub: 'Ai no Jikken · Track 02',
       duration: 327,
-      src: './assets/Lily%20Chou-Chou/%E5%91%BC%E5%90%B8%20(2008)/02%20-%20%E6%84%9B%E3%81%AE%E5%AE%9F%E9%A8%93.flac'
+      src: './assets/Lily%20Chou-Chou/%E5%91%BC%E5%90%B8%20%282008%29/02%20-%20%E6%84%9B%E3%81%AE%E5%AE%9F%E9%A8%93.flac'
     },
     {
       title: 'エロティック',
       sub: 'Erotic · Track 03',
       duration: 288,
-      src: './assets/Lily%20Chou-Chou/%E5%91%BC%E5%90%B8%20(2008)/03%20-%20%E3%82%A1%E3%83%AD%E3%83%86%E3%82%A3%E3%83%83%E3%82%AF.flac'
+      src: './assets/Lily%20Chou-Chou/%E5%91%BC%E5%90%B8%20%282008%29/03%20-%20%E3%82%A8%E3%83%AD%E3%83%86%E3%82%A3%E3%83%83%E3%82%AF.flac'
     },
     {
       title: '飛行船',
       sub: 'Hikousen · Track 04',
       duration: 187,
-      src: './assets/Lily%20Chou-Chou/%E5%91%BC%E5%90%B8%20(2008)/04%20-%20%E9%A3%9B%E8%A1%8C%E8%88%B9.flac'
+      src: './assets/Lily%20Chou-Chou/%E5%91%BC%E5%90%B8%20%282008%29/04%20-%20%E9%A3%9B%E8%A1%8C%E8%88%B9.flac'
     },
     {
       title: '回復する傷',
       sub: 'Kaifuku Suru Kizu · Track 05',
       duration: 183,
-      src: './assets/Lily%20Chou-Chou/%E5%91%BC%E5%90%B8%20(2008)/05%20-%20%E5%9B%9E%E5%BE%A9%E3%81%99%E3%82%8B%E5%82%B7.flac'
+      src: './assets/Lily%20Chou-Chou/%E5%91%BC%E5%90%B8%20%282008%29/05%20-%20%E5%9B%9E%E5%BE%A9%E3%81%99%E3%82%8B%E5%82%B7.flac'
     },
     {
       title: '飽和',
       sub: 'Houwa · Track 06',
       duration: 233,
-      src: './assets/Lily%20Chou-Chou/%E5%91%BC%E5%90%B8%20(2008)/06%20-%20%E9%A3%BD%E5%92%8C.flac'
+      src: './assets/Lily%20Chou-Chou/%E5%91%BC%E5%90%B8%20%282008%29/06%20-%20%E9%A3%BD%E5%92%8C.flac'
     },
     {
       title: '飛べない翼',
       sub: 'Tobenai Tsubasa · Track 07',
       duration: 288,
-      src: './assets/Lily%20Chou-Chou/%E5%91%BC%E5%90%B8%20(2008)/07%20-%20%E9%A3%9B%E3%81%B9%E3%81%AA%E3%81%84%E7%BF%BC.flac'
+      src: './assets/Lily%20Chou-Chou/%E5%91%BC%E5%90%B8%20%282008%29/07%20-%20%E9%A3%9B%E3%81%B9%E3%81%AA%E3%81%84%E7%BF%BC.flac'
     },
     {
       title: '共鳴（空虚な石）',
       sub: 'Kyoumei (Kuukyo na Ishi) · Track 08',
       duration: 263,
-      src: './assets/Lily%20Chou-Chou/%E5%91%BC%E5%90%B8%20(2008)/08%20-%20%E5%85%B1%E9%B3%B4%EF%BC%88%E7%A9%BA%E8%99%9A%E3%81%AA%E7%9F%B3%EF%BC%89.flac'
+      src: './assets/Lily%20Chou-Chou/%E5%91%BC%E5%90%B8%20%282008%29/08%20-%20%E5%85%B1%E9%B3%B4%EF%BC%88%E7%A9%BA%E8%99%9A%E3%81%AA%E7%9F%B3%EF%BC%89.flac'
     },
     {
       title: 'グライド',
       sub: 'Glide · Track 09',
       duration: 220,
-      src: './assets/Lily%20Chou-Chou/%E5%91%BC%E5%90%B8%20(2008)/09%20-%20%E3%82%B0%E3%83%A9%E3%82%A4%E3%83%89.flac'
+      src: './assets/Lily%20Chou-Chou/%E5%91%BC%E5%90%B8%20%282008%29/09%20-%20%E3%82%B0%E3%83%A9%E3%82%A4%E3%83%89.flac'
     }
   ];
 
