@@ -18,13 +18,13 @@ Run `python3 tests/check_site.py` to check local assets, anchor targets, duplica
 - `index.html`: the fan experience and accessible native still viewer.
 - `style.css` / `script.js`: layout, themes, gallery, BBS fragments, and optional motion.
 - `player.css` / `player.js`: the portable Discman presentation and HTML5 audio engine routed into Web Audio API for real-time oscilloscope and frequency visualization.
-- `assets/`: film images, animation, wordmarks, and the 9-track album *呼吸 (Kokyuu)* in `assets/Lily Chou-Chou/呼吸 (2008)/`.
+- `assets/`: film images, animation, wordmarks, and the 9-track MP3 album *呼吸 (Kokyuu)* in `assets/Lily Chou-Chou/呼吸 (2008)/`.
 
 ## Interactions
 
 Choose a landscape, open its still, and use the arrows to browse. A still can become the opening scene; the selection and theme are remembered when browser storage is available. Gallery triggers support arrow keys. The dialog supports Escape and restores focus when closed.
 
-The Discman features all 9 tracks from the official album *呼吸 (Kokyuu)* by Lily Chou-Chou (composed by Takeshi Kobayashi, vocals by Salyu), with play/pause/stop, track seeking, volume attenuation, lid controls, and disc/field/waveform views. Audio streams progressively and routes through Web Audio API to drive the real-time FFT frequency bars and phosphor CRT oscilloscope. Audio starts through user interaction only.
+The Discman features all 9 tracks from the official album *呼吸 (Kokyuu)* by Lily Chou-Chou (composed by Takeshi Kobayashi, vocals by Salyu), with play/pause/stop, track seeking, volume attenuation, lid controls, and disc/field/waveform views. Audio streams progressively from lightweight MP3 files and routes through Web Audio API to drive the real-time FFT frequency bars and phosphor CRT oscilloscope. Playback begins automatically on page visit or smoothly on the user's first interaction, with manual transport controls always available.
 
 The BBS fragments are original fan writing, not film quotations or messages from live users. There is no form or backend. Reduced-motion preferences stop ambient animation and use a still image instead of the animated field. The footer also offers a motion pause control.
 
