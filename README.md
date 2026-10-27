@@ -1,4 +1,4 @@
-# The Ether
+# The Ether - All About Lily Chou-Chou
 
 An independent fan tribute to Shunji Iwai’s *All About Lily Chou-Chou* (2001).
 
